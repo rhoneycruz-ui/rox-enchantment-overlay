@@ -1,0 +1,14 @@
+{
+  "titles": [
+    {"file": "pt-armor-title.png", "type": "armor"},
+    {"file": "en-weapon.png", "type": "weapon"},
+    {"file": "en-armor.png", "type": "armor"},
+    {"file": "en-armour.png", "type": "armor"},
+    {"file": "en-accessory.png", "type": "accessory"}
+  ],
+  "levels": [
+    {"file": "level-14-real.png", "level": 14},
+    {"file": "level-19.png", "level": 19}
+  ]
+}
+

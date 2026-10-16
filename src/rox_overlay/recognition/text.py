@@ -31,7 +31,38 @@ def normalize_ocr_text(text: str) -> str:
 def classify_item_type(text: str) -> ItemType | None:
     tokens = set(normalize_ocr_text(text).split())
     matches = [item_type for item_type, keywords in _TYPE_TOKENS.items() if tokens & keywords]
-    return matches[0] if len(matches) == 1 else None
+    if len(matches) == 1:
+        return matches[0]
+    if matches:
+        return None
+
+    fuzzy_matches = {
+        item_type
+        for item_type, keywords in _TYPE_TOKENS.items()
+        for token in tokens
+        for keyword in keywords
+        if min(len(token), len(keyword)) >= 4 and _edit_distance_at_most_one(token, keyword)
+    }
+    return next(iter(fuzzy_matches)) if len(fuzzy_matches) == 1 else None
+
+
+def _edit_distance_at_most_one(left: str, right: str) -> bool:
+    if abs(len(left) - len(right)) > 1:
+        return False
+    if len(left) > len(right):
+        left, right = right, left
+    if len(left) == len(right):
+        return sum(a != b for a, b in zip(left, right, strict=True)) <= 1
+    index_left = index_right = differences = 0
+    while index_left < len(left) and index_right < len(right):
+        if left[index_left] == right[index_right]:
+            index_left += 1
+        else:
+            differences += 1
+            if differences > 1:
+                return False
+        index_right += 1
+    return True
 
 
 def _prepare_for_ocr(image: np.ndarray) -> np.ndarray:
@@ -41,8 +72,10 @@ def _prepare_for_ocr(image: np.ndarray) -> np.ndarray:
         gray = image
     else:
         raise ValueError("OCR image must be grayscale or BGR")
-    enlarged = cv2.resize(gray, None, fx=3.0, fy=3.0, interpolation=cv2.INTER_CUBIC)
-    return cv2.createCLAHE(clipLimit=2.0, tileGridSize=(8, 8)).apply(enlarged)
+    enlarged = cv2.resize(gray, None, fx=4.0, fy=4.0, interpolation=cv2.INTER_CUBIC)
+    enhanced = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(8, 8)).apply(enlarged)
+    mode = cv2.THRESH_BINARY if float(enhanced.mean()) >= 128 else cv2.THRESH_BINARY_INV
+    return cv2.threshold(enhanced, 0, 255, mode | cv2.THRESH_OTSU)[1]
 
 
 def read_item_type(image: np.ndarray, ocr: OcrEngine) -> FieldReading[ItemType]:

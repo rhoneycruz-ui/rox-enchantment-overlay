@@ -87,7 +87,7 @@ class PanelDetector:
             return frame[top:bottom, left:right].copy()
 
         return PanelRegions(
-            title=crop(0.18, 0.325, 0.84, 0.395),
-            level=crop(0.02, 0.395, 0.19, 0.475),
+            title=crop(0.22, 0.34, 0.79, 0.38),
+            level=crop(0.01, 0.40, 0.17, 0.47),
             progress=crop(0.16, 0.395, 0.86, 0.475),
         )
