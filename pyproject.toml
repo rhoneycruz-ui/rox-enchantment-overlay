@@ -18,6 +18,12 @@ dependencies = [
 [project.optional-dependencies]
 dev = ["pytest>=9,<10"]
 
+[project.scripts]
+rox-overlay = "rox_overlay.app:main"
+
+[tool.setuptools.package-data]
+rox_overlay = ["assets/*.png", "assets/fonts/*"]
+
 [tool.setuptools.packages.find]
 where = ["src"]
 

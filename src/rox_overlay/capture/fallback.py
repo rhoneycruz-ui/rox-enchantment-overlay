@@ -32,3 +32,9 @@ class CascadingFrameSource:
         frame = self._primary.capture(window)
         return frame if frame is not None else self._fallback.capture(window)
 
+    def close(self) -> None:
+        for source in (self._primary, self._fallback):
+            close = getattr(source, "close", None)
+            if callable(close):
+                close()
+
