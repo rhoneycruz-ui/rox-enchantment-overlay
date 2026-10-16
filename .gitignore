@@ -1,0 +1,12 @@
+.superpowers/
+.venv/
+__pycache__/
+.pytest_cache/
+*.py[cod]
+build/
+dist/
+*.egg-info/
+work/
+outputs/
+*.log
+user-config.json
