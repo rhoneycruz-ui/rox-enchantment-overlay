@@ -1,0 +1,6 @@
+[
+  {"file": "armor-14.png", "crop": [78, 278, 342, 303], "min": 0.15, "max": 0.28},
+  {"file": "accessory-14.png", "crop": [78, 283, 342, 307], "min": 0.58, "max": 0.72},
+  {"file": "weapon-14.png", "crop": [75, 274, 343, 300], "min": 0.30, "max": 0.48}
+]
+
