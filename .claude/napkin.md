@@ -8,6 +8,9 @@
 
 ## Execution & Validation (Highest Priority)
 
+1. **[2026-10-16] Reject Poppler's `icuuc.dll` from PyInstaller Qt bundles**
+   Do instead: filter the `icuuc.dll` whose source path contains `poppler` from `Analysis.binaries`; otherwise it shadows Windows ICU and PySide6.QtCore fails with WinError 127. Validate by checking the final archive has no root `_internal/icuuc.dll` and that the packaged settings window—not merely the process—opens.
+
 ## Shell & Command Reliability
 
 ## Domain Behavior Guardrails

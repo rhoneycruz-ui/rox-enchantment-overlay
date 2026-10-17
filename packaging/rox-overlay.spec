@@ -30,6 +30,14 @@ a = Analysis(
     noarchive=False,
     optimize=1,
 )
+# The host workspace exposes Poppler's ICU 78 on PATH. PyInstaller otherwise
+# bundles its icuuc.dll beside Qt, where it shadows Windows' compatible ICU
+# forwarder and makes PySide6.QtCore fail with WinError 127 on Windows 10.
+a.binaries = [
+    entry
+    for entry in a.binaries
+    if not (entry[0].casefold() == "icuuc.dll" and "poppler" in entry[1].casefold())
+]
 pyz = PYZ(a.pure)
 
 exe = EXE(

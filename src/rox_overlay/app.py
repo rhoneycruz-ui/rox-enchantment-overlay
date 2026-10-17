@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import sys
+import os
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -131,8 +132,15 @@ def build_application(
     return runtime
 
 
-def main() -> int:
-    runtime = build_application()
+def main(argv: list[str] | None = None) -> int:
+    arguments = sys.argv[1:] if argv is None else argv
+    self_test = "--self-test" in arguments
+    if self_test:
+        os.environ["QT_QPA_PLATFORM"] = "offscreen"
+    runtime = build_application(start_worker=not self_test)
+    if self_test:
+        runtime.shutdown()
+        return 0
     runtime.settings.show()
     runtime.tray.show()
     return runtime.app.exec()
