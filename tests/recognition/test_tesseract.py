@@ -73,3 +73,21 @@ def test_full_pipeline_recognizes_all_real_portuguese_panels(filename: str, expe
     assert result.level == 14
     assert 0 <= result.progress <= 1
 
+
+def test_full_pipeline_refreshes_item_type_when_panel_changes() -> None:
+    engine = TesseractOcrEngine(TESSERACT, TESSDATA)
+    pipeline = RecognitionPipeline(PanelDetector(), engine)
+    expected_sequence = (
+        ("accessory-panel.png", ItemType.ACCESSORY),
+        ("armor-panel.png", ItemType.ARMOR),
+        ("weapon-panel.png", ItemType.WEAPON),
+    )
+
+    results = []
+    for filename, _expected in expected_sequence:
+        image = cv2.imread(str(ROOT / "tests" / "fixtures" / "panels" / filename))
+        result = pipeline.recognize(image)
+        results.append(result.item_type if result is not None else None)
+
+    assert results == [expected for _filename, expected in expected_sequence]
+

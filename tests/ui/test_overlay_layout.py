@@ -1,9 +1,11 @@
 from __future__ import annotations
 
 import os
+from pathlib import Path
 
 os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
 
+import cv2
 import pytest
 from PySide6.QtCore import QPoint, QSize, Qt
 from PySide6.QtWidgets import QApplication, QLabel
@@ -55,7 +57,21 @@ def test_overlay_has_native_noninteractive_flags_and_updates_text(app: QApplicat
 
     assert overlay.findChild(QLabel, "itemLabel").text() == "ARMADURA"
     assert "14 → 15" in overlay.findChild(QLabel, "levelLabel").text()
-    assert overlay.findChild(QLabel, "zenyLabel").text() == "7.011.000 Zeny"
+    assert overlay.findChild(QLabel, "zenyLabel").text() == "7.011.000"
+    currency_icon = overlay.findChild(QLabel, "currencyIcon")
+    assert currency_icon.pixmap() is not None
+    assert not currency_icon.pixmap().isNull()
+
+
+def test_currency_icon_has_real_transparency() -> None:
+    path = Path(__file__).parents[2] / "src" / "rox_overlay" / "assets" / "crystal-currency.png"
+    image = cv2.imread(str(path), cv2.IMREAD_UNCHANGED)
+
+    assert image is not None
+    assert image.shape[2] == 4
+    alpha = image[:, :, 3]
+    assert alpha.max() == 255
+    assert (alpha == 0).mean() > 0.5
 
 
 def test_opacity_changes_background_only(app: QApplication) -> None:

@@ -4,17 +4,20 @@ from __future__ import annotations
 
 import sys
 import os
+from collections.abc import Callable
 from dataclasses import dataclass
 from pathlib import Path
 
 from PySide6.QtCore import QMetaObject, QThread, Qt
 from PySide6.QtWidgets import QApplication
 
+from rox_overlay.autoclick import AutoClickController
 from rox_overlay.capture.base import FrameSource, WindowDiscovery
 from rox_overlay.capture.fallback import CascadingFrameSource, MssCaptureSource
 from rox_overlay.capture.windows import Win32WindowDiscovery, WindowsCaptureSource
 from rox_overlay.config import ConfigStore
 from rox_overlay.controller import RecognitionController
+from rox_overlay.hotkey import GlobalF1Hotkey
 from rox_overlay.recognition.panel import PanelDetector
 from rox_overlay.recognition.pipeline import RecognitionPipeline
 from rox_overlay.recognition.tesseract import TesseractOcrEngine
@@ -34,6 +37,8 @@ class ApplicationRuntime:
     controller: RecognitionController
     overlay: OverlayWindow
     settings: SettingsWindow
+    autoclick: AutoClickController
+    hotkey: GlobalF1Hotkey
     tray: TrayController
     config_store: ConfigStore
     worker: QThread | None = None
@@ -43,6 +48,8 @@ class ApplicationRuntime:
     def shutdown(self) -> None:
         if self.is_shutdown:
             return
+        self.hotkey.close()
+        self.autoclick.stop()
         if self.worker is not None and self.worker.isRunning():
             QMetaObject.invokeMethod(
                 self.controller,
@@ -68,6 +75,7 @@ def build_application(
     capture: FrameSource | None = None,
     pipeline: RecognitionPipeline | None = None,
     config_store: ConfigStore | None = None,
+    hotkey_factory: Callable[[QApplication, Callable[[], None]], GlobalF1Hotkey] = GlobalF1Hotkey,
     start_worker: bool = True,
 ) -> ApplicationRuntime:
     qt_app = app or QApplication.instance() or QApplication(sys.argv)
@@ -95,6 +103,9 @@ def build_application(
     overlay = OverlayWindow()
     overlay.set_opacity(config.opacity_percent)
     settings = SettingsWindow(window_discovery, config)
+    autoclick = AutoClickController()
+    hotkey = hotkey_factory(qt_app, autoclick.toggle)
+    settings.set_hotkey_available(hotkey.registered)
     tray = TrayController(settings)
     worker = QThread() if start_worker else None
     if worker is not None:
@@ -106,6 +117,8 @@ def build_application(
     settings.opacity_changed.connect(overlay.set_opacity)
     settings.pause_requested.connect(controller.pause)
     settings.resume_requested.connect(controller.resume)
+    settings.autoclick_toggle_requested.connect(autoclick.toggle)
+    autoclick.state_changed.connect(settings.set_autoclick_state)
     controller.snapshot_ready.connect(overlay.show_snapshot)
     controller.overlay_hidden.connect(overlay.hide_overlay)
     controller.status_changed.connect(settings.set_status)
@@ -122,6 +135,8 @@ def build_application(
         controller,
         overlay,
         settings,
+        autoclick,
+        hotkey,
         tray,
         store,
         worker,

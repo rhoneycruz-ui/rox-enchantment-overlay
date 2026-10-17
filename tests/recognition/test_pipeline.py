@@ -100,3 +100,24 @@ def test_reuses_valid_ocr_when_title_and_level_pixels_are_unchanged(monkeypatch)
     assert pipeline.recognize(frame) is not None
 
     assert ocr.calls == 2
+
+
+def test_revalidates_cached_title_after_five_uses(monkeypatch) -> None:
+    detection = PanelDetection(PANEL_RECT, 1.0, 0.93)
+    ocr = FakeOcr(
+        FieldReading("Armor Level", 0.88, "Armor Level"),
+        FieldReading("14", 0.91, "14"),
+        FieldReading("Accessory Level", 0.88, "Accessory Level"),
+    )
+    monkeypatch.setattr(
+        "rox_overlay.recognition.pipeline.read_progress",
+        lambda image: FieldReading(0.4, 0.79),
+    )
+    pipeline = RecognitionPipeline(FakePanelDetector(detection), ocr)  # type: ignore[arg-type]
+    frame = np.zeros((100, 100, 3), dtype=np.uint8)
+
+    results = [pipeline.recognize(frame) for _ in range(7)]
+
+    assert results[-1] is not None
+    assert results[-1].item_type is ItemType.ACCESSORY
+    assert ocr.calls == 3

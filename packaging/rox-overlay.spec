@@ -8,6 +8,9 @@ datas = [
     (str(project_root / "vendor" / "tesseract"), "vendor/tesseract"),
     (str(src_root / "rox_overlay" / "assets"), "rox_overlay/assets"),
     (str(project_root / "README.md"), "."),
+    (str(project_root / "LICENSE"), "."),
+    (str(project_root / "THIRD_PARTY_NOTICES.md"), "."),
+    (str(project_root / "third_party" / "licenses"), "third_party/licenses"),
 ]
 
 a = Analysis(

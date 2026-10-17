@@ -6,7 +6,7 @@ import ctypes
 from pathlib import Path
 
 from PySide6.QtCore import QPoint, QRect, QSize, Qt
-from PySide6.QtGui import QColor, QFont, QFontDatabase, QGuiApplication, QPainter, QPaintEvent, QPen
+from PySide6.QtGui import QColor, QFont, QFontDatabase, QGuiApplication, QPainter, QPaintEvent, QPen, QPixmap
 from PySide6.QtWidgets import (
     QFrame,
     QHBoxLayout,
@@ -137,7 +137,23 @@ class OverlayWindow(QWidget):
         musp_box.addWidget(self._label("—", "muspelliumLabel", "font-size: 15px; font-weight: 650;"))
         zeny_box = QVBoxLayout()
         zeny_box.addWidget(self._label("CUSTO RESTANTE", "zenyCaption", "font-size: 9px; color: #9BA8C8;"))
-        zeny_box.addWidget(self._label("—", "zenyLabel", "font-size: 15px; font-weight: 700; color: #F5C86A;"))
+        currency_row = QHBoxLayout()
+        currency_row.setSpacing(4)
+        currency_row.addWidget(self._label("—", "zenyLabel", "font-size: 15px; font-weight: 700; color: #F5C86A;"))
+        currency_icon = QLabel()
+        currency_icon.setObjectName("currencyIcon")
+        currency_icon.setFixedSize(20, 20)
+        icon_path = Path(__file__).parents[1] / "assets" / "crystal-currency.png"
+        currency_icon.setPixmap(
+            QPixmap(str(icon_path)).scaled(
+                18,
+                18,
+                Qt.AspectRatioMode.KeepAspectRatio,
+                Qt.TransformationMode.SmoothTransformation,
+            )
+        )
+        currency_row.addWidget(currency_icon)
+        zeny_box.addLayout(currency_row)
         metrics.addLayout(musp_box)
         metrics.addStretch()
         metrics.addLayout(zeny_box)
@@ -157,7 +173,7 @@ class OverlayWindow(QWidget):
         self.findChild(QProgressBar, "progressBar").setValue(round(estimate.progress * 1000))
         self.findChild(QLabel, "pointsLabel").setText(_format_integer(estimate.remaining_points))
         self.findChild(QLabel, "muspelliumLabel").setText(_format_integer(estimate.remaining_muspellium))
-        self.findChild(QLabel, "zenyLabel").setText(f"{_format_integer(estimate.remaining_zeny)} Zeny")
+        self.findChild(QLabel, "zenyLabel").setText(_format_integer(estimate.remaining_zeny))
 
         if work_area is None:
             center = QPoint(

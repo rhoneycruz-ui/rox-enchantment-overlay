@@ -7,6 +7,7 @@ os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
 
 import numpy as np
 from PySide6.QtWidgets import QApplication
+from PySide6.QtWidgets import QPushButton
 
 from rox_overlay.app import build_application
 from rox_overlay.capture.base import WindowInfo
@@ -32,6 +33,20 @@ class FakePipeline:
         return None
 
 
+class FakeHotkey:
+    def __init__(self, _app: QApplication, callback) -> None:
+        self.registered = True
+        self.callback = callback
+        self.closed = False
+
+    def trigger(self) -> None:
+        self.callback()
+
+    def close(self) -> None:
+        self.closed = True
+        self.registered = False
+
+
 def test_build_application_wires_components_and_shutdown() -> None:
     app = QApplication.instance() or QApplication([])
     path = Path("work/app-wiring-config.json")
@@ -42,11 +57,20 @@ def test_build_application_wires_components_and_shutdown() -> None:
         capture=FakeCapture(),
         pipeline=FakePipeline(),
         config_store=ConfigStore(path),
+        hotkey_factory=FakeHotkey,
         start_worker=False,
     )
 
     assert runtime.settings is not None
     assert runtime.overlay is not None
     assert runtime.controller is not None
+    assert runtime.autoclick.state == "idle"
+    runtime.hotkey.trigger()
+    assert runtime.autoclick.state == "countdown"
+    runtime.hotkey.trigger()
+    assert runtime.autoclick.state == "idle"
+    runtime.settings.findChild(QPushButton, "autoclickButton").click()
     runtime.shutdown()
     assert runtime.is_shutdown
+    assert runtime.autoclick.state == "idle"
+    assert runtime.hotkey.closed

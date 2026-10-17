@@ -1,4 +1,6 @@
 .superpowers/
+.claude/
+docs/superpowers/
 .venv/
 __pycache__/
 .pytest_cache/
