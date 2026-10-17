@@ -31,10 +31,10 @@ class FakePipeline:
         return self.reading
 
 
-def make_controller() -> tuple[RecognitionController, FakeCapture, FakePipeline]:
+def make_controller(discovery=None) -> tuple[RecognitionController, FakeCapture, FakePipeline]:
     capture = FakeCapture()
     pipeline = FakePipeline()
-    controller = RecognitionController(capture, pipeline, unit_price=100)
+    controller = RecognitionController(capture, pipeline, unit_price=100, discovery=discovery)
     return controller, capture, pipeline
 
 
@@ -105,3 +105,75 @@ def test_translates_detected_panel_to_screen_coordinates() -> None:
         controller.tick_once()
 
     assert snapshots[-1].panel_rect == Rect(1000, 90, 370, 650)
+
+
+def test_reacquires_window_geometry_while_monitoring() -> None:
+    class MovingDiscovery:
+        def list_windows(self):
+            return []
+
+        def reacquire(self, previous: WindowInfo) -> WindowInfo | None:
+            return WindowInfo(previous.handle, previous.title, Rect(200, 75, 1280, 720))
+
+    controller, _, _ = make_controller(MovingDiscovery())
+    snapshots = []
+    controller.snapshot_ready.connect(snapshots.append)
+    controller.set_window(WINDOW)
+
+    for _ in range(3):
+        controller.tick_once()
+
+    assert snapshots[-1].panel_rect == Rect(1100, 115, 370, 650)
+
+
+def test_does_not_emit_duplicate_stable_snapshots() -> None:
+    controller, _, _ = make_controller()
+    snapshots = []
+    controller.snapshot_ready.connect(snapshots.append)
+    controller.set_window(WINDOW)
+
+    for _ in range(6):
+        controller.tick_once()
+
+    assert len(snapshots) == 1
+
+
+def test_pause_hides_published_overlay_and_resume_restabilizes() -> None:
+    controller, _, _ = make_controller()
+    hidden = []
+    snapshots = []
+    controller.overlay_hidden.connect(lambda: hidden.append(True))
+    controller.snapshot_ready.connect(snapshots.append)
+    controller.set_window(WINDOW)
+    for _ in range(3):
+        controller.tick_once()
+
+    controller.pause()
+    assert hidden == [True]
+    controller.resume()
+    count = len(snapshots)
+    for _ in range(2):
+        controller.tick_once()
+    assert len(snapshots) == count
+    controller.tick_once()
+    assert len(snapshots) == count + 1
+
+
+def test_converts_physical_panel_pixels_to_qt_coordinates_at_high_dpi() -> None:
+    controller, _, _ = make_controller()
+    snapshots = []
+    controller.snapshot_ready.connect(snapshots.append)
+    window = WindowInfo(
+        4,
+        "Ragnarok X",
+        Rect(1920, 0, 1920, 1080),
+        dpi_scale=1.5,
+        monitor_x=1920,
+        monitor_y=0,
+    )
+    controller.set_window(window)
+
+    for _ in range(3):
+        controller.tick_once()
+
+    assert snapshots[-1].panel_rect == Rect(2520, 27, 247, 433)

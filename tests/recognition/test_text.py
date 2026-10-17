@@ -26,6 +26,7 @@ from rox_overlay.recognition.text import (
         ("Armour Level", ItemType.ARMOR),
         ("Accessory Level", ItemType.ACCESSORY),
         ("NiveI da Arma", ItemType.WEAPON),
+        ("~yRfvel da Armadurd~", ItemType.ARMOR),
     ],
 )
 def test_classifies_portuguese_and_english_titles(text: str, expected: ItemType) -> None:

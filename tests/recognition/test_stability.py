@@ -68,3 +68,17 @@ def test_hides_on_fifth_invalid_frame_and_reappears_after_three_valid_frames() -
     assert visible.visible is True
     assert visible.reading is not None
     assert visible.reading.progress == pytest.approx(0.30)
+
+
+def test_hides_after_five_incompatible_readings_even_when_they_alternate() -> None:
+    stabilizer = ReadingStabilizer()
+    for progress in [0.20, 0.21, 0.19]:
+        stabilizer.push(reading(progress))
+
+    alternatives = [ItemType.WEAPON, ItemType.ACCESSORY] * 3
+    for item_type in alternatives[:4]:
+        assert stabilizer.push(reading(0.5, item_type=item_type)).visible is True
+    hidden = stabilizer.push(reading(0.5, item_type=alternatives[4]))
+
+    assert hidden.visible is False
+    assert hidden.reading is None

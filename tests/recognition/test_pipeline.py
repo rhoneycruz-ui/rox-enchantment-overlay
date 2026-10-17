@@ -81,3 +81,22 @@ def test_composes_fields_and_uses_lowest_confidence(monkeypatch) -> None:
     assert result.progress == 0.4
     assert result.confidence == 0.79
     assert result.panel_rect == PANEL_RECT
+
+
+def test_reuses_valid_ocr_when_title_and_level_pixels_are_unchanged(monkeypatch) -> None:
+    detection = PanelDetection(PANEL_RECT, 1.0, 0.93)
+    ocr = FakeOcr(
+        FieldReading("Armor Level", 0.88, "Armor Level"),
+        FieldReading("14", 0.91, "14"),
+    )
+    monkeypatch.setattr(
+        "rox_overlay.recognition.pipeline.read_progress",
+        lambda image: FieldReading(0.4, 0.79),
+    )
+    pipeline = RecognitionPipeline(FakePanelDetector(detection), ocr)  # type: ignore[arg-type]
+    frame = np.zeros((100, 100, 3), dtype=np.uint8)
+
+    assert pipeline.recognize(frame) is not None
+    assert pipeline.recognize(frame) is not None
+
+    assert ocr.calls == 2

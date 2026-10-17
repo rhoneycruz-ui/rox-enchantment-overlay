@@ -105,7 +105,7 @@ class OverlayWindow(QWidget):
 
         header = QHBoxLayout()
         item = self._label("—", "itemLabel", "font-size: 11px; font-weight: 700; color: #77E7FF;")
-        badge = self._label("PRONTERA", "cityLabel", "font-size: 9px; color: #A8B2CC;")
+        badge = self._label("● AO VIVO  ·  PRONTERA", "cityLabel", "font-size: 9px; color: #78DDEB;")
         header.addWidget(item)
         header.addStretch()
         header.addWidget(badge)

@@ -31,7 +31,17 @@ def write_diagnostic(
     if not confirmed:
         return None
     image_path.parent.mkdir(parents=True, exist_ok=True)
-    if not cv2.imwrite(str(image_path), frame):
+    annotated = frame.copy()
+    if reading is not None:
+        rect = reading.panel_rect
+        cv2.rectangle(
+            annotated,
+            (rect.x, rect.y),
+            (rect.x + rect.width, rect.y + rect.height),
+            (0, 230, 255),
+            2,
+        )
+    if not cv2.imwrite(str(image_path), annotated):
         raise OSError(f"não foi possível gravar {image_path}")
     if reading is None:
         payload: dict[str, object] = {"recognized": False}

@@ -15,6 +15,9 @@ class WindowInfo:
     handle: int
     title: str
     client_rect: Rect
+    dpi_scale: float = 1.0
+    monitor_x: int = 0
+    monitor_y: int = 0
 
 
 @runtime_checkable

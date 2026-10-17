@@ -60,6 +60,29 @@ class _CtypesWindowBackend:
         width, height = rect.right - rect.left, rect.bottom - rect.top
         return Rect(origin.x, origin.y, width, height) if width > 0 and height > 0 else None
 
+    def dpi_scale(self, handle: int) -> float:
+        try:
+            dpi = int(self._user32.GetDpiForWindow(handle))
+        except (AttributeError, OSError):
+            dpi = 96
+        return max(1.0, dpi / 96.0) if dpi > 0 else 1.0
+
+    def monitor_origin(self, handle: int) -> tuple[int, int]:
+        class MonitorInfo(ctypes.Structure):
+            _fields_ = [
+                ("cbSize", wintypes.DWORD),
+                ("rcMonitor", wintypes.RECT),
+                ("rcWork", wintypes.RECT),
+                ("dwFlags", wintypes.DWORD),
+            ]
+
+        monitor = self._user32.MonitorFromWindow(handle, 2)
+        info = MonitorInfo()
+        info.cbSize = ctypes.sizeof(info)
+        if monitor and self._user32.GetMonitorInfoW(monitor, ctypes.byref(info)):
+            return int(info.rcMonitor.left), int(info.rcMonitor.top)
+        return 0, 0
+
 
 class Win32WindowDiscovery:
     def __init__(self, backend: WindowBackend | None = None) -> None:
@@ -73,7 +96,13 @@ class Win32WindowDiscovery:
             title = self._backend.title(handle).strip()
             rect = self._backend.client_rect(handle)
             if title and rect is not None:
-                windows.append(WindowInfo(handle, title, rect))
+                dpi_reader = getattr(self._backend, "dpi_scale", None)
+                origin_reader = getattr(self._backend, "monitor_origin", None)
+                dpi_scale = float(dpi_reader(handle)) if callable(dpi_reader) else 1.0
+                monitor_x, monitor_y = origin_reader(handle) if callable(origin_reader) else (0, 0)
+                windows.append(
+                    WindowInfo(handle, title, rect, dpi_scale, monitor_x, monitor_y)
+                )
         return windows
 
     def reacquire(self, previous: WindowInfo) -> WindowInfo | None:
@@ -93,6 +122,7 @@ class WindowsCaptureSource:
         self._session = None
         self._control = None
         self._frame: np.ndarray | None = None
+        self._closed = True
         self._lock = threading.Lock()
 
     def _start_session(self, title: str) -> None:
@@ -115,13 +145,18 @@ class WindowsCaptureSource:
         def on_closed() -> None:
             with self._lock:
                 self._frame = None
+                self._closed = True
 
         self._session = session
+        with self._lock:
+            self._closed = False
         self._control = session.start_free_threaded()
         self._title = title
 
     def capture(self, window: WindowInfo) -> np.ndarray | None:
-        if self._title != window.title or self._control is None:
+        with self._lock:
+            closed = self._closed
+        if self._title != window.title or self._control is None or closed:
             try:
                 self._start_session(window.title)
             except Exception:
@@ -141,4 +176,5 @@ class WindowsCaptureSource:
         self._title = None
         with self._lock:
             self._frame = None
+            self._closed = True
 

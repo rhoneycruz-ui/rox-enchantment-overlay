@@ -85,7 +85,12 @@ def build_application(
         )
         pipeline = RecognitionPipeline(PanelDetector(), ocr)
 
-    controller = RecognitionController(frame_source, pipeline, unit_price=config.unit_price)
+    controller = RecognitionController(
+        frame_source,
+        pipeline,
+        unit_price=config.unit_price,
+        discovery=window_discovery,
+    )
     overlay = OverlayWindow()
     overlay.set_opacity(config.opacity_percent)
     settings = SettingsWindow(window_discovery, config)

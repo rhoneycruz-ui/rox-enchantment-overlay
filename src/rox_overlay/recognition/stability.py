@@ -38,7 +38,15 @@ class ReadingStabilizer:
 
     def push(self, reading: RecognizedState) -> StableState:
         key = (reading.item_type, reading.level)
-        self._invalid_count = 0
+        published_key = (
+            (self._published.item_type, self._published.level)
+            if self._published is not None
+            else None
+        )
+        if published_key is not None and key != published_key:
+            self._invalid_count += 1
+        else:
+            self._invalid_count = 0
         if key != self._candidate_key:
             self._candidate_key = key
             self._candidate_count = 1
@@ -51,6 +59,9 @@ class ReadingStabilizer:
             progress = float(median(item.progress for item in self._readings))
             confidence = float(median(item.confidence for item in self._readings))
             self._published = replace(reading, progress=progress, confidence=confidence)
+            self._invalid_count = 0
+        elif self._invalid_count >= self._hide_after:
+            self._published = None
 
         return StableState(self._published, self._published is not None)
 

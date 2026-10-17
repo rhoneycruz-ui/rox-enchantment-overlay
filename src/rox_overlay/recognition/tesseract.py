@@ -20,6 +20,8 @@ class OcrExecutionError(RuntimeError):
 
 
 class TesseractOcrEngine:
+    supports_parallel = True
+
     def __init__(self, tesseract_path: str | Path, tessdata_dir: str | Path) -> None:
         self._executable = Path(tesseract_path)
         self._tessdata_dir = Path(tessdata_dir)
@@ -61,6 +63,7 @@ class TesseractOcrEngine:
                 capture_output=True,
                 timeout=10,
                 check=False,
+                creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0),
             )
         except (OSError, subprocess.TimeoutExpired) as exc:
             raise OcrExecutionError("falha ao executar o OCR local") from exc

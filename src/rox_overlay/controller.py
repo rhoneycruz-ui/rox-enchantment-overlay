@@ -6,7 +6,7 @@ from dataclasses import dataclass
 
 from PySide6.QtCore import QObject, QTimer, Signal, Slot
 
-from rox_overlay.capture.base import FrameSource, WindowInfo
+from rox_overlay.capture.base import FrameSource, WindowDiscovery, WindowInfo
 from rox_overlay.domain import CostEstimate, estimate_cost
 from rox_overlay.recognition.models import Rect
 from rox_overlay.recognition.pipeline import RecognitionPipeline
@@ -32,16 +32,19 @@ class RecognitionController(QObject):
         *,
         unit_price: int = 0,
         fps: int = 5,
+        discovery: WindowDiscovery | None = None,
         parent: QObject | None = None,
     ) -> None:
         super().__init__(parent)
         self._capture = capture
         self._pipeline = pipeline
+        self._discovery = discovery
         self._stabilizer = ReadingStabilizer()
         self._unit_price = unit_price
         self._window: WindowInfo | None = None
         self._paused = False
         self._was_visible = False
+        self._last_snapshot_key: tuple[CostEstimate, Rect] | None = None
         self.interval_ms = round(1000 / fps)
         self._timer = QTimer(self)
         self._timer.setInterval(self.interval_ms)
@@ -49,6 +52,8 @@ class RecognitionController(QObject):
 
     def set_window(self, window: WindowInfo | None) -> None:
         self._window = window
+        self._stabilizer = ReadingStabilizer()
+        self._last_snapshot_key = None
 
     @Slot(object)
     def start(self, window: WindowInfo) -> None:
@@ -60,6 +65,8 @@ class RecognitionController(QObject):
     @Slot()
     def pause(self) -> None:
         self._paused = True
+        self._stabilizer = ReadingStabilizer()
+        self._publish_visibility(False)
         self.status_changed.emit("pausado")
 
     @Slot()
@@ -70,8 +77,8 @@ class RecognitionController(QObject):
     @Slot()
     def stop(self) -> None:
         self._timer.stop()
-        self._window = None
         self._publish_visibility(False)
+        self.set_window(None)
         self.status_changed.emit("parado")
 
     @Slot(int)
@@ -84,6 +91,13 @@ class RecognitionController(QObject):
     def tick_once(self) -> None:
         if self._paused or self._window is None:
             return
+        if self._discovery is not None:
+            current = self._discovery.reacquire(self._window)
+            if current is None:
+                self.status_changed.emit("janela_indisponivel")
+                self._handle_invalid()
+                return
+            self._window = current
         frame = self._capture.capture(self._window)
         if frame is None:
             self.status_changed.emit("janela_indisponivel")
@@ -105,15 +119,21 @@ class RecognitionController(QObject):
             self._was_visible = True
             origin = self._window.client_rect
             panel = stable.reading.panel_rect
+            scale = max(1.0, self._window.dpi_scale)
+            physical_x = origin.x + panel.x
+            physical_y = origin.y + panel.y
             screen_panel = Rect(
-                origin.x + panel.x,
-                origin.y + panel.y,
-                panel.width,
-                panel.height,
+                self._window.monitor_x + round((physical_x - self._window.monitor_x) / scale),
+                self._window.monitor_y + round((physical_y - self._window.monitor_y) / scale),
+                round(panel.width / scale),
+                round(panel.height / scale),
             )
-            self.snapshot_ready.emit(
-                OverlaySnapshot(estimate, screen_panel, stable.reading.confidence)
-            )
+            snapshot_key = (estimate, screen_panel)
+            if snapshot_key != self._last_snapshot_key:
+                self.snapshot_ready.emit(
+                    OverlaySnapshot(estimate, screen_panel, stable.reading.confidence)
+                )
+                self._last_snapshot_key = snapshot_key
             self.status_changed.emit("encanto_detectado")
 
     def _handle_invalid(self) -> None:
@@ -124,4 +144,5 @@ class RecognitionController(QObject):
     def _publish_visibility(self, visible: bool) -> None:
         if self._was_visible and not visible:
             self.overlay_hidden.emit()
+            self._last_snapshot_key = None
         self._was_visible = visible
