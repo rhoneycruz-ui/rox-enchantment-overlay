@@ -1,16 +1,29 @@
 # ROX Enchantment Overlay
 
+![Interface visual do ROX Enchantment Overlay](docs/assets/rox-overlay-banner.png)
+
 [![Windows](https://img.shields.io/badge/Windows-10%20%7C%2011-42C8F5)](https://github.com/rhoneycruz-ui/rox-enchantment-overlay/releases/latest)
 [![Release](https://img.shields.io/github/v/release/rhoneycruz-ui/rox-enchantment-overlay)](https://github.com/rhoneycruz-ui/rox-enchantment-overlay/releases/latest)
+[![Tests](https://github.com/rhoneycruz-ui/rox-enchantment-overlay/actions/workflows/tests.yml/badge.svg)](https://github.com/rhoneycruz-ui/rox-enchantment-overlay/actions/workflows/tests.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-8FE13A.svg)](LICENSE)
 
 Assistente gratuito e local para calcular, em tempo real, quanto falta gastar no encantamento de **Prontera** em Ragnarok X. O programa reconhece arma, armadura ou acessório, lê o nível e a barra de progresso e mostra uma sobreposição compacta ao lado do menu do jogo.
 
 > O programa não modifica o jogo e não envia imagens ou dados pela internet. A leitura é feita visualmente na tela do próprio computador.
 
+**[Baixar a versão portátil para Windows](https://github.com/rhoneycruz-ui/rox-enchantment-overlay/releases/latest/download/ROX-Enchantment-Overlay-portable.zip)** · [Notas da versão](https://github.com/rhoneycruz-ui/rox-enchantment-overlay/releases/latest)
+
+## Visão geral
+
+O aplicativo combina captura de janela, visão computacional e OCR bilíngue para transformar o painel de encantamento em um resumo objetivo. A configuração permanece separada do overlay: o usuário escolhe a janela, informa o preço e controla opacidade, pausa e autoclique em um único lugar.
+
+<p align="center">
+  <img src="docs/assets/settings-window.png" alt="Janela de configuração do ROX Enchantment Overlay" width="620">
+</p>
+
 ## Download
 
-Baixe a versão mais recente na página de [Releases](https://github.com/rhoneycruz-ui/rox-enchantment-overlay/releases/latest).
+Baixe diretamente o arquivo [`ROX-Enchantment-Overlay-portable.zip`](https://github.com/rhoneycruz-ui/rox-enchantment-overlay/releases/latest/download/ROX-Enchantment-Overlay-portable.zip) ou consulte a página de [Releases](https://github.com/rhoneycruz-ui/rox-enchantment-overlay/releases/latest).
 
 O arquivo pronto para usar é `ROX-Enchantment-Overlay-portable.zip`. Depois do download, confira o SHA-256 publicado junto da mesma versão se quiser validar a integridade do arquivo.
 
