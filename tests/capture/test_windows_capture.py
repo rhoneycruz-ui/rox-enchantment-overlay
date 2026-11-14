@@ -14,7 +14,7 @@ class FakeControl:
 
 
 class FakeWindowsCapture:
-    instances: list["FakeWindowsCapture"] = []
+    instances: list[FakeWindowsCapture] = []
 
     def __init__(self, **_kwargs) -> None:
         self.handlers = {}
@@ -44,3 +44,16 @@ def test_restarts_gpu_capture_after_source_window_closes(monkeypatch) -> None:
     source.capture(window)
 
     assert len(FakeWindowsCapture.instances) == 2
+
+
+def test_declines_native_capture_when_title_is_ambiguous(monkeypatch) -> None:
+    FakeWindowsCapture.instances.clear()
+    monkeypatch.setitem(
+        sys.modules,
+        "windows_capture",
+        types.SimpleNamespace(WindowsCapture=FakeWindowsCapture),
+    )
+    source = WindowsCaptureSource(title_count=lambda _title: 2)
+
+    assert source.capture(WindowInfo(1, "Ragnarok X", Rect(0, 0, 1280, 720))) is None
+    assert FakeWindowsCapture.instances == []

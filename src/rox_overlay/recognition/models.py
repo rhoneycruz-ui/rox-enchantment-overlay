@@ -7,7 +7,6 @@ from typing import Generic, Protocol, TypeVar, runtime_checkable
 
 import numpy as np
 
-
 T = TypeVar("T")
 
 

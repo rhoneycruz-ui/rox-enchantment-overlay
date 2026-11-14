@@ -88,3 +88,54 @@ def test_unregister_failure_remains_observable() -> None:
     assert hotkey.release_succeeded is False
     assert hotkey.registered
     assert app.removed == [hotkey]
+
+
+def test_rebind_switches_to_another_function_key() -> None:
+    app = FakeApplication()
+    registrations: list[int] = []
+    unregistrations: list[int] = []
+    hotkey = GlobalF1Hotkey(
+        app,  # type: ignore[arg-type]
+        lambda: None,
+        register_hotkey=lambda _hwnd, _id, _modifiers, key: registrations.append(key) or True,
+        unregister_hotkey=lambda _hwnd, hotkey_id: unregistrations.append(hotkey_id) or True,
+    )
+
+    assert hotkey.rebind("F8")
+    assert registrations == [0x70, 0x77]
+    assert unregistrations == [0x524F]
+    assert hotkey.key == "F8"
+
+
+def test_rejects_unknown_keys() -> None:
+    import pytest
+
+    from rox_overlay.hotkey import virtual_key_for
+
+    assert virtual_key_for("F12") == 0x7B
+    with pytest.raises(ValueError):
+        virtual_key_for("F13")
+
+
+def test_disabled_hotkey_is_not_registered_until_enabled() -> None:
+    from PySide6.QtCore import QCoreApplication
+
+    from rox_overlay.hotkey import GlobalHotkey
+
+    app = QCoreApplication.instance() or QCoreApplication([])
+    calls: list[str] = []
+    hotkey = GlobalHotkey(
+        app,
+        lambda: None,
+        key="F2",
+        enabled=False,
+        register_hotkey=lambda *args: calls.append("register") or True,
+        unregister_hotkey=lambda *args: calls.append("unregister") or True,
+    )
+    assert hotkey.registered is False and calls == []
+    assert hotkey.rebind("F3") is False and calls == []  # stays free while disabled
+
+    assert hotkey.set_enabled(True) is True
+    assert hotkey.set_enabled(False) is False
+    assert calls == ["register", "unregister"]
+    hotkey.close()

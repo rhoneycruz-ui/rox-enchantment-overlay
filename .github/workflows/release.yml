@@ -1,0 +1,63 @@
+name: Release
+
+# Push a tag like v1.1.0 to build the portable ZIP on a clean Windows runner
+# and publish it, with its SHA-256, as a GitHub release.
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: windows-latest
+    timeout-minutes: 30
+    env:
+      QT_QPA_PLATFORM: offscreen
+      PYTHONUTF8: "1"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install project
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e ".[dev]"
+
+      - name: Test before packaging
+        run: python -m pytest -q
+
+      - name: Build portable package
+        shell: pwsh
+        run: ./scripts/build_release.ps1 -Python python
+
+      - name: Smoke test the executable
+        shell: pwsh
+        run: |
+          & "dist/ROX Enchantment Overlay/ROX Enchantment Overlay.exe" --self-test
+          if ($LASTEXITCODE -ne 0) { throw "self-test falhou ($LASTEXITCODE)" }
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ROX-Enchantment-Overlay-portable
+          path: |
+            dist/ROX-Enchantment-Overlay-portable.zip
+            dist/ROX-Enchantment-Overlay-portable.zip.sha256
+
+      - name: Publish release
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            dist/ROX-Enchantment-Overlay-portable.zip
+            dist/ROX-Enchantment-Overlay-portable.zip.sha256
+          generate_release_notes: true

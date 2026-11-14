@@ -4,12 +4,11 @@ import json
 from pathlib import Path
 
 import numpy as np
+from scripts.fixture_capture import write_diagnostic
 
 from rox_overlay.domain import ItemType
 from rox_overlay.recognition.models import Rect
 from rox_overlay.recognition.stability import RecognizedState
-from scripts.fixture_capture import write_diagnostic
-
 
 OUTPUT = Path("work/diagnostic-test.png")
 METADATA = OUTPUT.with_suffix(".json")

@@ -9,7 +9,6 @@ import numpy as np
 from rox_overlay.recognition.models import Rect
 from rox_overlay.recognition.panel import PanelDetector
 
-
 FIXTURE_DIR = Path(__file__).parents[1] / "fixtures" / "panels"
 
 
@@ -70,3 +69,40 @@ def test_extracts_non_empty_normalized_regions() -> None:
     assert regions.progress.size > 0
     assert regions.title.shape[1] > regions.level.shape[1]
     assert regions.progress.shape[1] > regions.level.shape[1]
+
+
+def test_tracking_fast_path_matches_full_search_and_is_faster() -> None:
+    import time
+
+    frame = cv2.imread(str(FIXTURE_DIR / "game-full.png"))
+    fresh = PanelDetector().detect(frame)
+    tracker = PanelDetector()
+
+    started = time.perf_counter()
+    first = tracker.detect(frame)
+    full_seconds = time.perf_counter() - started
+    started = time.perf_counter()
+    second = tracker.detect(frame)
+    tracked_seconds = time.perf_counter() - started
+
+    assert fresh is not None and first is not None and second is not None
+    assert first.rect == fresh.rect
+    assert _iou(second.rect, fresh.rect) >= 0.95
+    assert tracked_seconds < full_seconds
+
+
+def test_tracking_falls_back_when_panel_disappears() -> None:
+    frame = cv2.imread(str(FIXTURE_DIR / "game-full.png"))
+    tracker = PanelDetector()
+    assert tracker.detect(frame) is not None
+
+    assert tracker.detect(np.zeros_like(frame)) is None
+    assert tracker.detect(frame) is not None
+
+
+def test_closed_menu_hud_is_not_mistaken_for_the_panel() -> None:
+    # In-game screen with the enchant menu closed: a round HUD button used to
+    # score ~0.74 and keep the overlay up until OCR failed five times.
+    frame = cv2.imread(str(Path(__file__).parents[1] / "fixtures" / "screens" / "closed-menu-alberta.png"))
+    assert frame is not None
+    assert PanelDetector().detect(frame) is None

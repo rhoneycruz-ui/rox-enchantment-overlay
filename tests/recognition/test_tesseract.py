@@ -7,11 +7,10 @@ import cv2
 import pytest
 
 from rox_overlay.domain import ItemType
-from rox_overlay.recognition.tesseract import OcrConfigurationError, TesseractOcrEngine
-from rox_overlay.recognition.text import read_item_type, read_level
 from rox_overlay.recognition.panel import PanelDetector
 from rox_overlay.recognition.pipeline import RecognitionPipeline
-
+from rox_overlay.recognition.tesseract import OcrConfigurationError, TesseractOcrEngine
+from rox_overlay.recognition.text import read_item_type, read_level
 
 ROOT = Path(__file__).parents[2]
 FIXTURE_DIR = ROOT / "tests" / "fixtures" / "text"

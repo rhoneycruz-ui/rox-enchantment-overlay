@@ -7,6 +7,7 @@ src_root = project_root / "src"
 datas = [
     (str(project_root / "vendor" / "tesseract"), "vendor/tesseract"),
     (str(src_root / "rox_overlay" / "assets"), "rox_overlay/assets"),
+    (str(src_root / "rox_overlay" / "data"), "rox_overlay/data"),
     (str(project_root / "README.md"), "."),
     (str(project_root / "LICENSE"), "."),
     (str(project_root / "THIRD_PARTY_NOTICES.md"), "."),
@@ -33,9 +34,10 @@ a = Analysis(
     noarchive=False,
     optimize=1,
 )
-# The host workspace exposes Poppler's ICU 78 on PATH. PyInstaller otherwise
-# bundles its icuuc.dll beside Qt, where it shadows Windows' compatible ICU
+# Some machines expose a foreign ICU (e.g. Poppler's) on PATH. PyInstaller would
+# bundle that icuuc.dll beside Qt, where it shadows Windows' compatible ICU
 # forwarder and makes PySide6.QtCore fail with WinError 127 on Windows 10.
+# Harmless on clean machines such as the CI release runner.
 a.binaries = [
     entry
     for entry in a.binaries
@@ -57,6 +59,7 @@ exe = EXE(
     disable_windowed_traceback=False,
     argv_emulation=False,
     target_arch=None,
+    icon=str(src_root / "rox_overlay" / "assets" / "app-icon.ico"),
     codesign_identity=None,
     entitlements_file=None,
 )
