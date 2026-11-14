@@ -1,6 +1,6 @@
 # ROX Enchantment Overlay
 
-![Interface visual do ROX Enchantment Overlay](docs/assets/rox-overlay-banner.png)
+![Arte do ROX Enchantment Overlay: aventureiros analisando o custo de encantamento de arma, armadura e acessório](docs/assets/rox-overlay-banner.png)
 
 [![Windows](https://img.shields.io/badge/Windows-10%20%7C%2011-42C8F5)](https://github.com/rhoneycruz-ui/rox-enchantment-overlay/releases/latest)
 [![Release](https://img.shields.io/github/v/release/rhoneycruz-ui/rox-enchantment-overlay)](https://github.com/rhoneycruz-ui/rox-enchantment-overlay/releases/latest)
