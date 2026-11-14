@@ -6,7 +6,6 @@ from rox_overlay.domain import ItemType
 from rox_overlay.recognition.models import Rect
 from rox_overlay.recognition.stability import ReadingStabilizer, RecognizedState
 
-
 PANEL = Rect(920, 40, 400, 650)
 
 
@@ -82,3 +81,43 @@ def test_hides_after_five_incompatible_readings_even_when_they_alternate() -> No
 
     assert hidden.visible is False
     assert hidden.reading is None
+
+
+def test_closed_menu_hides_after_two_absent_frames() -> None:
+    stabilizer = ReadingStabilizer()
+    for _ in range(3):
+        stabilizer.push(reading(0.2))
+
+    assert stabilizer.mark_invalid(panel_absent=True).visible is True
+    assert stabilizer.mark_invalid(panel_absent=True).visible is False
+
+
+def test_unreadable_but_present_panel_still_waits_five_frames() -> None:
+    stabilizer = ReadingStabilizer()
+    for _ in range(3):
+        stabilizer.push(reading(0.2))
+
+    for _ in range(4):
+        assert stabilizer.mark_invalid().visible is True
+    assert stabilizer.mark_invalid().visible is False
+
+
+def test_absent_frames_must_be_consecutive() -> None:
+    stabilizer = ReadingStabilizer()
+    for _ in range(3):
+        stabilizer.push(reading(0.2))
+
+    stabilizer.mark_invalid(panel_absent=True)
+    stabilizer.push(reading(0.2))
+    assert stabilizer.mark_invalid(panel_absent=True).visible is True
+
+
+def test_city_is_the_most_common_in_recent_readings() -> None:
+    from dataclasses import replace
+
+    stabilizer = ReadingStabilizer()
+    for city in ("Morroc", None, "Morroc", "Payon"):
+        state = stabilizer.push(replace(reading(0.2), city=city))
+
+    assert state.reading is not None
+    assert state.reading.city == "Morroc"

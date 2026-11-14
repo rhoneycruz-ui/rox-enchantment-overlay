@@ -2,9 +2,16 @@
 
 from __future__ import annotations
 
+from pathlib import Path
+
 from PySide6.QtCore import Signal
 from PySide6.QtGui import QAction, QColor, QIcon, QPainter, QPixmap
 from PySide6.QtWidgets import QMenu, QSystemTrayIcon, QWidget
+
+
+def app_icon() -> QIcon:
+    path = Path(__file__).parents[1] / "assets" / "app-icon.png"
+    return QIcon(str(path)) if path.is_file() else _tray_icon()
 
 
 def _tray_icon() -> QIcon:
@@ -25,16 +32,24 @@ class TrayController(QSystemTrayIcon):
     exit_requested = Signal()
 
     def __init__(self, settings: QWidget) -> None:
-        super().__init__(_tray_icon(), settings)
+        super().__init__(app_icon(), settings)
         self.setToolTip("ROX Enchantment Overlay")
         menu = QMenu()
         show_action = QAction("Abrir configurações", menu)
-        show_action.triggered.connect(settings.show)
+        show_action.triggered.connect(lambda: _bring_to_front(settings))
         menu.addAction(show_action)
         menu.addSeparator()
         exit_action = QAction("Sair", menu)
         exit_action.triggered.connect(self.exit_requested)
         menu.addAction(exit_action)
         self.setContextMenu(menu)
-        self.activated.connect(lambda reason: settings.show() if reason == self.ActivationReason.Trigger else None)
+        self.activated.connect(
+            lambda reason: _bring_to_front(settings) if reason == self.ActivationReason.Trigger else None
+        )
+
+
+def _bring_to_front(window: QWidget) -> None:
+    window.showNormal()
+    window.raise_()
+    window.activateWindow()
 

@@ -4,9 +4,9 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "rox-enchantment-overlay"
-version = "1.0.0"
+version = "1.2.0"
 description = "Overlay local para calcular custos de encantamento de Prontera em Ragnarok X"
-requires-python = ">=3.12,<3.13"
+requires-python = ">=3.12,<3.14"
 dependencies = [
     "mss>=10,<11",
     "numpy>=2,<3",
@@ -16,13 +16,13 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-dev = ["pytest>=9,<10"]
+dev = ["pytest>=9,<10", "ruff>=0.8", "mypy>=1.13", "pyinstaller>=6.10"]
 
 [project.scripts]
 rox-overlay = "rox_overlay.app:main"
 
 [tool.setuptools.package-data]
-rox_overlay = ["assets/*.png", "assets/fonts/*"]
+rox_overlay = ["assets/*.png", "assets/stones/*.png", "assets/*.ico", "assets/fonts/*", "data/*.json"]
 
 [tool.setuptools.packages.find]
 where = ["src"]
@@ -34,3 +34,17 @@ addopts = "-ra -p no:cacheprovider"
 
 
 
+[tool.ruff]
+line-length = 120
+target-version = "py312"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP"]
+ignore = ["E402", "UP046", "UP047"]
+
+[tool.mypy]
+python_version = "3.12"
+files = ["src"]
+ignore_missing_imports = true
+warn_unused_ignores = true

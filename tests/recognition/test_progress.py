@@ -9,7 +9,6 @@ import pytest
 
 from rox_overlay.recognition.progress import read_progress
 
-
 FIXTURE_DIR = Path(__file__).parents[1] / "fixtures" / "progress"
 
 

@@ -1,0 +1,52 @@
+{
+  "game_data_version": "rox.methax.com/enchanting, conferida em 2026-11-14 (níveis 1–19, 8 cidades)",
+  "max_level": 20,
+  "points_by_level": {
+    "1": 10, "2": 30, "3": 60, "4": 100, "5": 150, "6": 250, "7": 400,
+    "8": 600, "9": 850, "10": 1150, "11": 1550, "12": 2050, "13": 2800,
+    "14": 3800, "15": 5050, "16": 6550, "17": 8300, "18": 10300, "19": 12550
+  },
+  "crystal_city": "Prontera",
+  "cities": {
+    "Prontera": {
+      "weapon":    {"stone": "Lv.1 Muspellium", "stones_per_tap": 90, "points_per_tap": 3},
+      "armor":     {"stone": "Lv.1 Muspellium", "stones_per_tap": 30, "points_per_tap": 1},
+      "accessory": {"stone": "Lv.1 Muspellium", "stones_per_tap": 30, "points_per_tap": 1}
+    },
+    "Izlude": {
+      "weapon":    {"stone": "Sharpening Enchantment Stone", "stones_per_tap": 6, "points_per_tap": 3},
+      "armor":     {"stone": "Toughening Enchantment Stone", "stones_per_tap": 2, "points_per_tap": 1},
+      "accessory": {"stone": "Secret Enchantment Stone", "stones_per_tap": 2, "points_per_tap": 1}
+    },
+    "Morroc": {
+      "weapon":    {"stone": "Blazing Enchantment Stone", "stones_per_tap": 6, "points_per_tap": 6},
+      "armor":     {"stone": "Hardening Enchantment Stone", "stones_per_tap": 2, "points_per_tap": 2},
+      "accessory": {"stone": "Gold Enchantment Stone", "stones_per_tap": 2, "points_per_tap": 2}
+    },
+    "Alberta": {
+      "weapon":    {"stone": "Tidal Current Enchantment Stone", "stones_per_tap": 6, "points_per_tap": 12},
+      "armor":     {"stone": "Crystallize Enchantment Stone", "stones_per_tap": 2, "points_per_tap": 4},
+      "accessory": {"stone": "Glowing Star Enchantment Stone", "stones_per_tap": 2, "points_per_tap": 4}
+    },
+    "Payon": {
+      "weapon":    {"stone": "Gloomy Enchantment Stone", "stones_per_tap": 6, "points_per_tap": 24},
+      "armor":     {"stone": "Petrifying Enchantment Stone", "stones_per_tap": 2, "points_per_tap": 8},
+      "accessory": {"stone": "Silverspirit Enchantment Stone", "stones_per_tap": 2, "points_per_tap": 8}
+    },
+    "Geffen": {
+      "weapon":    {"stone": "Cold Enchantment Stone", "stones_per_tap": 6, "points_per_tap": 48},
+      "armor":     {"stone": "Praying Enchantment Stone", "stones_per_tap": 2, "points_per_tap": 16},
+      "accessory": {"stone": "Rosecrystal Enchantment Stone", "stones_per_tap": 2, "points_per_tap": 16}
+    },
+    "Glast Heim": {
+      "weapon":    {"stone": "Lost Spirit Enchantment Stone", "stones_per_tap": 6, "points_per_tap": 96},
+      "armor":     {"stone": "Illumination Enchantment Stone", "stones_per_tap": 2, "points_per_tap": 32},
+      "accessory": {"stone": "Steel Dust Enchantment Stone", "stones_per_tap": 2, "points_per_tap": 32}
+    },
+    "Al De Baran": {
+      "weapon":    {"stone": "Dark Stillness Enchantment Stone", "stones_per_tap": 6, "points_per_tap": 96},
+      "armor":     {"stone": "Solar Enchantment Stone", "stones_per_tap": 2, "points_per_tap": 32},
+      "accessory": {"stone": "Starlight Enchantment Stone", "stones_per_tap": 2, "points_per_tap": 32}
+    }
+  }
+}

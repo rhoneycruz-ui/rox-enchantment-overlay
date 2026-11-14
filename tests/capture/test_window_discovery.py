@@ -53,3 +53,77 @@ def test_reacquire_prefers_same_handle_among_multiple_candidates() -> None:
 
     assert Win32WindowDiscovery(backend).reacquire(WindowInfo(7, "Game", rect)).handle == 7
 
+
+
+@dataclass
+class RichBackend(FakeBackend):
+    foreground: int = 0
+    pids: dict[int, int] | None = None
+    cursor: tuple[int, int] | None = None
+    alive: set[int] | None = None
+    enumerations: int = 0
+
+    def handles(self) -> list[int]:
+        self.enumerations += 1
+        return super().handles()
+
+    def is_window(self, handle: int) -> bool:
+        return handle in (self.alive if self.alive is not None else set(self.handles()))
+
+    def foreground_handle(self) -> int:
+        return self.foreground
+
+    def process_id(self, handle: int) -> int:
+        return (self.pids or {}).get(handle, 1)
+
+    def cursor_position(self) -> tuple[int, int] | None:
+        return self.cursor
+
+
+def test_reacquire_same_handle_does_not_enumerate_all_windows() -> None:
+    rect = Rect(0, 0, 800, 600)
+    backend = RichBackend([(7, "Game", True, rect)], alive={7})
+
+    assert Win32WindowDiscovery(backend).reacquire(WindowInfo(7, "Game", rect)) is not None
+    assert backend.enumerations == 0
+
+
+def test_foreground_accepts_game_or_own_windows_only() -> None:
+    import os
+
+    rect = Rect(0, 0, 800, 600)
+    backend = RichBackend([(7, "Game", True, rect)], pids={50: os.getpid()})
+    discovery = Win32WindowDiscovery(backend)
+    game = WindowInfo(7, "Game", rect)
+
+    backend.foreground = 7
+    assert discovery.is_foreground(game)
+    backend.foreground = 50
+    assert discovery.is_foreground(game)
+    backend.foreground = 99
+    assert not discovery.is_foreground(game)
+
+
+def test_lists_skip_own_windows_and_count_duplicate_titles() -> None:
+    import os
+
+    rect = Rect(0, 0, 800, 600)
+    backend = RichBackend(
+        [(7, "Game", True, rect), (8, " game ", True, rect), (9, "Overlay", True, rect)],
+        pids={9: os.getpid()},
+    )
+    discovery = Win32WindowDiscovery(backend)
+
+    assert [window.handle for window in discovery.list_windows()] == [7, 8]
+    assert discovery.title_count("GAME") == 2
+
+
+def test_cursor_inside_uses_client_rect() -> None:
+    backend = RichBackend([(7, "Game", True, Rect(100, 100, 50, 50))])
+    discovery = Win32WindowDiscovery(backend)
+    game = WindowInfo(7, "Game", Rect(100, 100, 50, 50))
+
+    backend.cursor = (120, 149)
+    assert discovery.cursor_inside(game)
+    backend.cursor = (150, 120)
+    assert not discovery.cursor_inside(game)

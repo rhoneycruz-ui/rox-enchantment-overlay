@@ -43,3 +43,71 @@ def test_clicking_starts_after_countdown_and_stops_sending_clicks() -> None:
     controller._click_tick()
     assert controller.state == "idle"
     assert clicks == ["left", "left"]
+
+
+def _running(controller: AutoClickController) -> None:
+    controller.toggle()
+    for _ in range(3):
+        controller._countdown_tick()
+
+
+def test_send_input_structure_matches_windows_abi() -> None:
+    import ctypes
+
+    from rox_overlay.autoclick import _Input
+
+    assert ctypes.sizeof(_Input) == (40 if ctypes.sizeof(ctypes.c_void_p) == 8 else 28)
+
+
+def test_waits_while_cursor_outside_and_stops_when_game_loses_focus() -> None:
+    QApplication.instance() or QApplication([])
+    clicks: list[str] = []
+    guard = {"value": "outside"}
+    states: list[str] = []
+    controller = AutoClickController(click=lambda: clicks.append("left"), guard=lambda: guard["value"])
+    controller.state_changed.connect(lambda state, _n: states.append(state))
+
+    _running(controller)
+    assert clicks == []
+    assert controller.state == "waiting"
+
+    guard["value"] = "ok"
+    controller._click_tick()
+    assert clicks == ["left"]
+
+    guard["value"] = "unfocused"
+    controller._click_tick()
+    assert controller.state == "idle"
+    assert states[-1] == "stopped:game_unfocused"
+    assert clicks == ["left"]
+
+
+def test_stops_on_level_up_and_when_panel_closes() -> None:
+    QApplication.instance() or QApplication([])
+    controller = AutoClickController(click=lambda: None, guard=lambda: "ok")
+    states: list[str] = []
+    controller.state_changed.connect(lambda state, _n: states.append(state))
+
+    _running(controller)
+    controller.observe_level("armor", 14)
+    controller.observe_level("armor", 14)
+    assert controller.state == "running"
+    controller.observe_level("armor", 15)
+    assert states[-1] == "stopped:level_up"
+
+    _running(controller)
+    controller.panel_closed()
+    assert states[-1] == "stopped:panel_closed"
+
+
+def test_level_up_stop_can_be_disabled() -> None:
+    QApplication.instance() or QApplication([])
+    controller = AutoClickController(click=lambda: None, guard=lambda: "ok")
+    controller.set_stop_on_level_up(False)
+
+    _running(controller)
+    controller.observe_level("armor", 14)
+    controller.observe_level("armor", 15)
+
+    assert controller.state == "running"
+    controller.stop()

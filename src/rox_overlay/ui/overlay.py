@@ -19,7 +19,7 @@ from PySide6.QtWidgets import (
 from rox_overlay.controller import OverlaySnapshot
 from rox_overlay.domain import ItemType
 from rox_overlay.recognition.models import Rect
-
+from rox_overlay.ui.widgets import child
 
 _ITEM_NAMES = {
     ItemType.WEAPON: "ARMA",
@@ -28,11 +28,22 @@ _ITEM_NAMES = {
 }
 
 
-def _load_interface_font() -> str:
+_CAPTION_CSS = "font-size: 9px; color: #9BA8C8;"
+LOW_CONFIDENCE = 0.6
+
+
+_FONT_FAMILY: str | None = None
+
+
+def load_interface_font() -> str:
+    global _FONT_FAMILY
+    if _FONT_FAMILY is not None:
+        return _FONT_FAMILY
     font_path = Path(__file__).parents[1] / "assets" / "fonts" / "Inter.ttf"
     font_id = QFontDatabase.addApplicationFont(str(font_path))
     families = QFontDatabase.applicationFontFamilies(font_id) if font_id >= 0 else []
-    return families[0] if families else "Arial"
+    _FONT_FAMILY = families[0] if families else "Arial"
+    return _FONT_FAMILY
 
 
 def _inside(candidate: Rect, work_area: Rect) -> bool:
@@ -63,7 +74,8 @@ def choose_overlay_rect(
         Rect(panel_rect.x + offset.x(), panel_rect.y - height - gap + offset.y(), width, height),
         Rect(panel_rect.x + offset.x(), panel_rect.y + panel_rect.height + gap + offset.y(), width, height),
     ]
-    return next((candidate for candidate in candidates if _inside(candidate, work_area)), _clamp(candidates[0], work_area))
+    fallback = _clamp(candidates[0], work_area)
+    return next((candidate for candidate in candidates if _inside(candidate, work_area)), fallback)
 
 
 def _format_integer(value: int) -> str:
@@ -83,9 +95,11 @@ class OverlayWindow(QWidget):
         self.setAttribute(Qt.WidgetAttribute.WA_TranslucentBackground)
         self.setAttribute(Qt.WidgetAttribute.WA_TransparentForMouseEvents)
         self.setAttribute(Qt.WidgetAttribute.WA_ShowWithoutActivating)
-        self.setFixedSize(300, 226)
+        self.setFixedSize(300, 244)
         self.background_opacity = 82
-        self.setFont(QFont(_load_interface_font()))
+        self._offset = QPoint()
+        self._last_snapshot: OverlaySnapshot | None = None
+        self.setFont(QFont(load_interface_font()))
         self._build_layout()
 
     def _label(self, text: str, object_name: str, css: str = "") -> QLabel:
@@ -118,7 +132,8 @@ class OverlayWindow(QWidget):
         progress.setTextVisible(False)
         progress.setFixedHeight(8)
         progress.setStyleSheet(
-            "QProgressBar { border: 1px solid rgba(125, 151, 212, 90); border-radius: 4px; background: rgba(4, 11, 30, 150); }"
+            "QProgressBar { border: 1px solid rgba(125, 151, 212, 90); border-radius: 4px;"
+            " background: rgba(4, 11, 30, 150); }"
             "QProgressBar::chunk { border-radius: 3px; background: #4DDBE8; }"
         )
         root.addWidget(progress)
@@ -128,18 +143,27 @@ class OverlayWindow(QWidget):
         divider.setFrameShape(QFrame.Shape.HLine)
         root.addWidget(divider)
 
-        root.addWidget(self._label("PONTOS RESTANTES", "pointsCaption", "font-size: 9px; color: #9BA8C8;"))
-        root.addWidget(self._label("—", "pointsLabel", "font-size: 18px; font-weight: 700;"))
+        counts = QHBoxLayout()
+        points_box = QVBoxLayout()
+        points_box.addWidget(self._label("PONTOS RESTANTES", "pointsCaption", _CAPTION_CSS))
+        points_box.addWidget(self._label("—", "pointsLabel", "font-size: 18px; font-weight: 700;"))
+        taps_box = QVBoxLayout()
+        taps_box.addWidget(self._label("TOQUES", "tapsCaption", _CAPTION_CSS))
+        taps_box.addWidget(self._label("—", "tapsLabel", "font-size: 18px; font-weight: 700; color: #77E7FF;"))
+        counts.addLayout(points_box)
+        counts.addStretch()
+        counts.addLayout(taps_box)
+        root.addLayout(counts)
 
         metrics = QHBoxLayout()
         musp_box = QVBoxLayout()
-        musp_box.addWidget(self._label("MUSPELLIUM", "muspCaption", "font-size: 9px; color: #9BA8C8;"))
+        musp_box.addWidget(self._label("MUSPELLIUM", "muspCaption", _CAPTION_CSS))
         musp_box.addWidget(self._label("—", "muspelliumLabel", "font-size: 15px; font-weight: 650;"))
-        zeny_box = QVBoxLayout()
-        zeny_box.addWidget(self._label("CUSTO RESTANTE", "zenyCaption", "font-size: 9px; color: #9BA8C8;"))
+        cost_box = QVBoxLayout()
+        cost_box.addWidget(self._label("CUSTO RESTANTE", "costCaption", _CAPTION_CSS))
         currency_row = QHBoxLayout()
         currency_row.setSpacing(4)
-        currency_row.addWidget(self._label("—", "zenyLabel", "font-size: 15px; font-weight: 700; color: #F5C86A;"))
+        currency_row.addWidget(self._label("—", "costLabel", "font-size: 15px; font-weight: 700; color: #F5C86A;"))
         currency_icon = QLabel()
         currency_icon.setObjectName("currencyIcon")
         currency_icon.setFixedSize(20, 20)
@@ -153,27 +177,52 @@ class OverlayWindow(QWidget):
             )
         )
         currency_row.addWidget(currency_icon)
-        zeny_box.addLayout(currency_row)
+        cost_box.addLayout(currency_row)
         metrics.addLayout(musp_box)
         metrics.addStretch()
-        metrics.addLayout(zeny_box)
+        metrics.addLayout(cost_box)
         root.addLayout(metrics)
+
+    def set_offset(self, x: int, y: int) -> None:
+        self._offset = QPoint(int(x), int(y))
+        if self.isVisible() and self._last_snapshot is not None:
+            self.show_snapshot(self._last_snapshot)
 
     def set_opacity(self, percent: int) -> None:
         if isinstance(percent, bool) or not isinstance(percent, int) or not 25 <= percent <= 100:
-            raise ValueError("opacity must be an integer between 25 and 100")
+            raise ValueError("opacity must be an integer between 25 and 100")  # caller bug, not user input
         self.background_opacity = percent
         self.update()
 
     def show_snapshot(self, snapshot: OverlaySnapshot, work_area: Rect | None = None) -> None:
+        self._last_snapshot = snapshot
         estimate = snapshot.estimate
-        self.findChild(QLabel, "itemLabel").setText(_ITEM_NAMES[estimate.item_type])
-        next_level = "MÁX" if estimate.next_level is None else str(estimate.next_level)
-        self.findChild(QLabel, "levelLabel").setText(f"{estimate.current_level} → {next_level}")
-        self.findChild(QProgressBar, "progressBar").setValue(round(estimate.progress * 1000))
-        self.findChild(QLabel, "pointsLabel").setText(_format_integer(estimate.remaining_points))
-        self.findChild(QLabel, "muspelliumLabel").setText(_format_integer(estimate.remaining_muspellium))
-        self.findChild(QLabel, "zenyLabel").setText(_format_integer(estimate.remaining_zeny))
+        approx = "≈ " if estimate.is_approximate else ""
+        child(self, QLabel, "itemLabel").setText(_ITEM_NAMES[estimate.item_type])
+        if estimate.next_level is None:
+            level_text = f"{estimate.current_level} → MÁX"
+        elif estimate.target_level is not None:
+            level_text = f"{estimate.current_level} → {estimate.next_level}  (meta)"
+        else:
+            level_text = f"{estimate.current_level} → {estimate.next_level}"
+        child(self, QLabel, "levelLabel").setText(level_text)
+        child(self, QProgressBar, "progressBar").setValue(round(estimate.progress * 1000))
+        child(self, QLabel, "pointsLabel").setText(approx + _format_integer(estimate.remaining_points))
+        child(self, QLabel, "tapsLabel").setText(approx + _format_integer(estimate.remaining_taps))
+        child(self, QLabel, "muspelliumLabel").setText(approx + _format_integer(estimate.remaining_stones))
+        child(self, QLabel, "muspCaption").setText("MUSPELLIUM" if estimate.priced_in_crystals else "PEDRAS")
+        child(self, QLabel, "muspelliumLabel").setToolTip(estimate.stone_name)
+        child(self, QLabel, "costLabel").setText(approx + _format_integer(estimate.remaining_crystals))
+        for name in ("costCaption", "costLabel", "currencyIcon"):
+            child(self, QLabel, name).setVisible(estimate.priced_in_crystals)
+        badge = child(self, QLabel, "cityLabel")
+        if snapshot.confidence < LOW_CONFIDENCE:
+            badge.setText("● LEITURA INCERTA")
+            badge.setStyleSheet("font-size: 9px; color: #E3A04A;")
+        else:
+            source = "" if snapshot.city_detected else "  (manual)"
+            badge.setText(f"● AO VIVO  ·  {estimate.city.upper()}{source}")
+            badge.setStyleSheet("font-size: 9px; color: #78DDEB;")
 
         if work_area is None:
             center = QPoint(
@@ -183,11 +232,12 @@ class OverlayWindow(QWidget):
             screen = QGuiApplication.screenAt(center) or QGuiApplication.primaryScreen()
             available = screen.availableGeometry() if screen is not None else QRect(0, 0, 1920, 1080)
             work_area = Rect(available.x(), available.y(), available.width(), available.height())
-        placement = choose_overlay_rect(snapshot.panel_rect, self.size(), work_area, QPoint())
+        placement = choose_overlay_rect(snapshot.panel_rect, self.size(), work_area, self._offset)
         self.setGeometry(placement.x, placement.y, placement.width, placement.height)
         self.show()
 
     def hide_overlay(self) -> None:
+        self._last_snapshot = None
         self.hide()
 
     def paintEvent(self, event: QPaintEvent) -> None:

@@ -12,7 +12,6 @@ from rox_overlay.domain import ItemType
 
 from .models import FieldReading, OcrEngine
 
-
 _TYPE_TOKENS = {
     ItemType.ACCESSORY: {"acessorio", "accessory"},
     ItemType.ARMOR: {"armadura", "armor", "armour"},

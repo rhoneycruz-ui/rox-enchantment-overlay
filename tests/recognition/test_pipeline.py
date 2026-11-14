@@ -9,7 +9,6 @@ from rox_overlay.recognition.models import FieldReading, Rect
 from rox_overlay.recognition.panel import PanelDetection, PanelRegions
 from rox_overlay.recognition.pipeline import RecognitionPipeline
 
-
 PANEL_RECT = Rect(900, 40, 400, 650)
 
 

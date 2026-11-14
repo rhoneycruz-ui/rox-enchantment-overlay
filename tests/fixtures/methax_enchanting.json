@@ -1,0 +1,2609 @@
+{
+ "source": "https://rox.methax.com/enchanting",
+ "retrieved": "2026-11-14",
+ "levels": {
+  "1": {
+   "weapon": {
+    "points": 10,
+    "cities": {
+     "Prontera": {
+      "taps": 3.3,
+      "stones": 300.0,
+      "stone": "Lv.1 Muspellium"
+     },
+     "Izlude": {
+      "taps": 3.3,
+      "stones": 20.0,
+      "stone": "Sharpening Enchantment Stone"
+     },
+     "Morroc": {
+      "taps": 1.7,
+      "stones": 10.0,
+      "stone": "Blazing Enchantment Stone"
+     },
+     "Alberta": {
+      "taps": 0.8,
+      "stones": 5.0,
+      "stone": "Tidal Current Enchantment Stone"
+     },
+     "Glast Heim": {
+      "taps": 0.1,
+      "stones": 0.6,
+      "stone": "Lost Spirit Enchantment Stone"
+     },
+     "Al De Baran": {
+      "taps": 0.1,
+      "stones": 0.6,
+      "stone": "Dark Stillness Enchantment Stone"
+     },
+     "Payon": {
+      "taps": 0.4,
+      "stones": 2.5,
+      "stone": "Gloomy Enchantment Stone"
+     },
+     "Geffen": {
+      "taps": 0.2,
+      "stones": 1.2,
+      "stone": "Cold Enchantment Stone"
+     }
+    }
+   },
+   "armor": {
+    "points": 10,
+    "cities": {
+     "Prontera": {
+      "taps": 10.0,
+      "stones": 300.0,
+      "stone": "Lv.1 Muspellium"
+     },
+     "Morroc": {
+      "taps": 5.0,
+      "stones": 10.0,
+      "stone": "Hardening Enchantment Stone"
+     },
+     "Alberta": {
+      "taps": 2.5,
+      "stones": 5.0,
+      "stone": "Crystallize Enchantment Stone"
+     },
+     "Izlude": {
+      "taps": 10.0,
+      "stones": 20.0,
+      "stone": "Toughening Enchantment Stone"
+     },
+     "Glast Heim": {
+      "taps": 0.3,
+      "stones": 0.6,
+      "stone": "Illumination Enchantment Stone"
+     },
+     "Geffen": {
+      "taps": 0.6,
+      "stones": 1.2,
+      "stone": "Praying Enchantment Stone"
+     },
+     "Payon": {
+      "taps": 1.2,
+      "stones": 2.5,
+      "stone": "Petrifying Enchantment Stone"
+     },
+     "Al De Baran": {
+      "taps": 0.3,
+      "stones": 0.6,
+      "stone": "Solar Enchantment Stone"
+     }
+    }
+   },
+   "accessory": {
+    "points": 10,
+    "cities": {
+     "Prontera": {
+      "taps": 10.0,
+      "stones": 300.0,
+      "stone": "Lv.1 Muspellium"
+     },
+     "Morroc": {
+      "taps": 5.0,
+      "stones": 10.0,
+      "stone": "Gold Enchantment Stone"
+     },
+     "Izlude": {
+      "taps": 10.0,
+      "stones": 20.0,
+      "stone": "Secret Enchantment Stone"
+     },
+     "Alberta": {
+      "taps": 2.5,
+      "stones": 5.0,
+      "stone": "Glowing Star Enchantment Stone"
+     },
+     "Glast Heim": {
+      "taps": 0.3,
+      "stones": 0.6,
+      "stone": "Steel Dust Enchantment Stone"
+     },
+     "Payon": {
+      "taps": 1.2,
+      "stones": 2.5,
+      "stone": "Silverspirit Enchantment Stone"
+     },
+     "Geffen": {
+      "taps": 0.6,
+      "stones": 1.2,
+      "stone": "Rosecrystal Enchantment Stone"
+     },
+     "Al De Baran": {
+      "taps": 0.3,
+      "stones": 0.6,
+      "stone": "Starlight Enchantment Stone"
+     }
+    }
+   }
+  },
+  "2": {
+   "weapon": {
+    "points": 30,
+    "cities": {
+     "Prontera": {
+      "taps": 10.0,
+      "stones": 900.0,
+      "stone": "Lv.1 Muspellium"
+     },
+     "Izlude": {
+      "taps": 10.0,
+      "stones": 60.0,
+      "stone": "Sharpening Enchantment Stone"
+     },
+     "Morroc": {
+      "taps": 5.0,
+      "stones": 30.0,
+      "stone": "Blazing Enchantment Stone"
+     },
+     "Alberta": {
+      "taps": 2.5,
+      "stones": 15.0,
+      "stone": "Tidal Current Enchantment Stone"
+     },
+     "Glast Heim": {
+      "taps": 0.3,
+      "stones": 1.9,
+      "stone": "Lost Spirit Enchantment Stone"
+     },
+     "Al De Baran": {
+      "taps": 0.3,
+      "stones": 1.9,
+      "stone": "Dark Stillness Enchantment Stone"
+     },
+     "Payon": {
+      "taps": 1.2,
+      "stones": 7.5,
+      "stone": "Gloomy Enchantment Stone"
+     },
+     "Geffen": {
+      "taps": 0.6,
+      "stones": 3.8,
+      "stone": "Cold Enchantment Stone"
+     }
+    }
+   },
+   "armor": {
+    "points": 30,
+    "cities": {
+     "Prontera": {
+      "taps": 30.0,
+      "stones": 900.0,
+      "stone": "Lv.1 Muspellium"
+     },
+     "Morroc": {
+      "taps": 15.0,
+      "stones": 30.0,
+      "stone": "Hardening Enchantment Stone"
+     },
+     "Alberta": {
+      "taps": 7.5,
+      "stones": 15.0,
+      "stone": "Crystallize Enchantment Stone"
+     },
+     "Izlude": {
+      "taps": 30.0,
+      "stones": 60.0,
+      "stone": "Toughening Enchantment Stone"
+     },
+     "Glast Heim": {
+      "taps": 0.9,
+      "stones": 1.9,
+      "stone": "Illumination Enchantment Stone"
+     },
+     "Geffen": {
+      "taps": 1.9,
+      "stones": 3.8,
+      "stone": "Praying Enchantment Stone"
+     },
+     "Payon": {
+      "taps": 3.8,
+      "stones": 7.5,
+      "stone": "Petrifying Enchantment Stone"
+     },
+     "Al De Baran": {
+      "taps": 0.9,
+      "stones": 1.9,
+      "stone": "Solar Enchantment Stone"
+     }
+    }
+   },
+   "accessory": {
+    "points": 30,
+    "cities": {
+     "Prontera": {
+      "taps": 30.0,
+      "stones": 900.0,
+      "stone": "Lv.1 Muspellium"
+     },
+     "Morroc": {
+      "taps": 15.0,
+      "stones": 30.0,
+      "stone": "Gold Enchantment Stone"
+     },
+     "Izlude": {
+      "taps": 30.0,
+      "stones": 60.0,
+      "stone": "Secret Enchantment Stone"
+     },
+     "Alberta": {
+      "taps": 7.5,
+      "stones": 15.0,
+      "stone": "Glowing Star Enchantment Stone"
+     },
+     "Glast Heim": {
+      "taps": 0.9,
+      "stones": 1.9,
+      "stone": "Steel Dust Enchantment Stone"
+     },
+     "Payon": {
+      "taps": 3.8,
+      "stones": 7.5,
+      "stone": "Silverspirit Enchantment Stone"
+     },
+     "Geffen": {
+      "taps": 1.9,
+      "stones": 3.8,
+      "stone": "Rosecrystal Enchantment Stone"
+     },
+     "Al De Baran": {
+      "taps": 0.9,
+      "stones": 1.9,
+      "stone": "Starlight Enchantment Stone"
+     }
+    }
+   }
+  },
+  "3": {
+   "weapon": {
+    "points": 60,
+    "cities": {
+     "Prontera": {
+      "taps": 20.0,
+      "stones": 1800.0,
+      "stone": "Lv.1 Muspellium"
+     },
+     "Izlude": {
+      "taps": 20.0,
+      "stones": 120.0,
+      "stone": "Sharpening Enchantment Stone"
+     },
+     "Morroc": {
+      "taps": 10.0,
+      "stones": 60.0,
+      "stone": "Blazing Enchantment Stone"
+     },
+     "Alberta": {
+      "taps": 5.0,
+      "stones": 30.0,
+      "stone": "Tidal Current Enchantment Stone"
+     },
+     "Glast Heim": {
+      "taps": 0.6,
+      "stones": 3.8,
+      "stone": "Lost Spirit Enchantment Stone"
+     },
+     "Al De Baran": {
+      "taps": 0.6,
+      "stones": 3.8,
+      "stone": "Dark Stillness Enchantment Stone"
+     },
+     "Payon": {
+      "taps": 2.5,
+      "stones": 15.0,
+      "stone": "Gloomy Enchantment Stone"
+     },
+     "Geffen": {
+      "taps": 1.2,
+      "stones": 7.5,
+      "stone": "Cold Enchantment Stone"
+     }
+    }
+   },
+   "armor": {
+    "points": 60,
+    "cities": {
+     "Prontera": {
+      "taps": 60.0,
+      "stones": 1800.0,
+      "stone": "Lv.1 Muspellium"
+     },
+     "Morroc": {
+      "taps": 30.0,
+      "stones": 60.0,
+      "stone": "Hardening Enchantment Stone"
+     },
+     "Alberta": {
+      "taps": 15.0,
+      "stones": 30.0,
+      "stone": "Crystallize Enchantment Stone"
+     },
+     "Izlude": {
+      "taps": 60.0,
+      "stones": 120.0,
+      "stone": "Toughening Enchantment Stone"
+     },
+     "Glast Heim": {
+      "taps": 1.9,
+      "stones": 3.8,
+      "stone": "Illumination Enchantment Stone"
+     },
+     "Geffen": {
+      "taps": 3.8,
+      "stones": 7.5,
+      "stone": "Praying Enchantment Stone"
+     },
+     "Payon": {
+      "taps": 7.5,
+      "stones": 15.0,
+      "stone": "Petrifying Enchantment Stone"
+     },
+     "Al De Baran": {
+      "taps": 1.9,
+      "stones": 3.8,
+      "stone": "Solar Enchantment Stone"
+     }
+    }
+   },
+   "accessory": {
+    "points": 60,
+    "cities": {
+     "Prontera": {
+      "taps": 60.0,
+      "stones": 1800.0,
+      "stone": "Lv.1 Muspellium"
+     },
+     "Morroc": {
+      "taps": 30.0,
+      "stones": 60.0,
+      "stone": "Gold Enchantment Stone"
+     },
+     "Izlude": {
+      "taps": 60.0,
+      "stones": 120.0,
+      "stone": "Secret Enchantment Stone"
+     },
+     "Alberta": {
+      "taps": 15.0,
+      "stones": 30.0,
+      "stone": "Glowing Star Enchantment Stone"
+     },
+     "Glast Heim": {
+      "taps": 1.9,
+      "stones": 3.8,
+      "stone": "Steel Dust Enchantment Stone"
+     },
+     "Payon": {
+      "taps": 7.5,
+      "stones": 15.0,
+      "stone": "Silverspirit Enchantment Stone"
+     },
+     "Geffen": {
+      "taps": 3.8,
+      "stones": 7.5,
+      "stone": "Rosecrystal Enchantment Stone"
+     },
+     "Al De Baran": {
+      "taps": 1.9,
+      "stones": 3.8,
+      "stone": "Starlight Enchantment Stone"
+     }
+    }
+   }
+  },
+  "4": {
+   "weapon": {
+    "points": 100,
+    "cities": {
+     "Prontera": {
+      "taps": 33.3,
+      "stones": 3000.0,
+      "stone": "Lv.1 Muspellium"
+     },
+     "Izlude": {
+      "taps": 33.3,
+      "stones": 200.0,
+      "stone": "Sharpening Enchantment Stone"
+     },
+     "Morroc": {
+      "taps": 16.7,
+      "stones": 100.0,
+      "stone": "Blazing Enchantment Stone"
+     },
+     "Alberta": {
+      "taps": 8.3,
+      "stones": 50.0,
+      "stone": "Tidal Current Enchantment Stone"
+     },
+     "Glast Heim": {
+      "taps": 1.0,
+      "stones": 6.2,
+      "stone": "Lost Spirit Enchantment Stone"
+     },
+     "Al De Baran": {
+      "taps": 1.0,
+      "stones": 6.2,
+      "stone": "Dark Stillness Enchantment Stone"
+     },
+     "Payon": {
+      "taps": 4.2,
+      "stones": 25.0,
+      "stone": "Gloomy Enchantment Stone"
+     },
+     "Geffen": {
+      "taps": 2.1,
+      "stones": 12.5,
+      "stone": "Cold Enchantment Stone"
+     }
+    }
+   },
+   "armor": {
+    "points": 100,
+    "cities": {
+     "Prontera": {
+      "taps": 100.0,
+      "stones": 3000.0,
+      "stone": "Lv.1 Muspellium"
+     },
+     "Morroc": {
+      "taps": 50.0,
+      "stones": 100.0,
+      "stone": "Hardening Enchantment Stone"
+     },
+     "Alberta": {
+      "taps": 25.0,
+      "stones": 50.0,
+      "stone": "Crystallize Enchantment Stone"
+     },
+     "Izlude": {
+      "taps": 100.0,
+      "stones": 200.0,
+      "stone": "Toughening Enchantment Stone"
+     },
+     "Glast Heim": {
+      "taps": 3.1,
+      "stones": 6.2,
+      "stone": "Illumination Enchantment Stone"
+     },
+     "Geffen": {
+      "taps": 6.2,
+      "stones": 12.5,
+      "stone": "Praying Enchantment Stone"
+     },
+     "Payon": {
+      "taps": 12.5,
+      "stones": 25.0,
+      "stone": "Petrifying Enchantment Stone"
+     },
+     "Al De Baran": {
+      "taps": 3.1,
+      "stones": 6.2,
+      "stone": "Solar Enchantment Stone"
+     }
+    }
+   },
+   "accessory": {
+    "points": 100,
+    "cities": {
+     "Prontera": {
+      "taps": 100.0,
+      "stones": 3000.0,
+      "stone": "Lv.1 Muspellium"
+     },
+     "Morroc": {
+      "taps": 50.0,
+      "stones": 100.0,
+      "stone": "Gold Enchantment Stone"
+     },
+     "Izlude": {
+      "taps": 100.0,
+      "stones": 200.0,
+      "stone": "Secret Enchantment Stone"
+     },
+     "Alberta": {
+      "taps": 25.0,
+      "stones": 50.0,
+      "stone": "Glowing Star Enchantment Stone"
+     },
+     "Glast Heim": {
+      "taps": 3.1,
+      "stones": 6.2,
+      "stone": "Steel Dust Enchantment Stone"
+     },
+     "Payon": {
+      "taps": 12.5,
+      "stones": 25.0,
+      "stone": "Silverspirit Enchantment Stone"
+     },
+     "Geffen": {
+      "taps": 6.2,
+      "stones": 12.5,
+      "stone": "Rosecrystal Enchantment Stone"
+     },
+     "Al De Baran": {
+      "taps": 3.1,
+      "stones": 6.2,
+      "stone": "Starlight Enchantment Stone"
+     }
+    }
+   }
+  },
+  "5": {
+   "weapon": {
+    "points": 150,
+    "cities": {
+     "Prontera": {
+      "taps": 50.0,
+      "stones": 4500.0,
+      "stone": "Lv.1 Muspellium"
+     },
+     "Izlude": {
+      "taps": 50.0,
+      "stones": 300.0,
+      "stone": "Sharpening Enchantment Stone"
+     },
+     "Morroc": {
+      "taps": 25.0,
+      "stones": 150.0,
+      "stone": "Blazing Enchantment Stone"
+     },
+     "Alberta": {
+      "taps": 12.5,
+      "stones": 75.0,
+      "stone": "Tidal Current Enchantment Stone"
+     },
+     "Glast Heim": {
+      "taps": 1.6,
+      "stones": 9.4,
+      "stone": "Lost Spirit Enchantment Stone"
+     },
+     "Al De Baran": {
+      "taps": 1.6,
+      "stones": 9.4,
+      "stone": "Dark Stillness Enchantment Stone"
+     },
+     "Payon": {
+      "taps": 6.2,
+      "stones": 37.5,
+      "stone": "Gloomy Enchantment Stone"
+     },
+     "Geffen": {
+      "taps": 3.1,
+      "stones": 18.8,
+      "stone": "Cold Enchantment Stone"
+     }
+    }
+   },
+   "armor": {
+    "points": 150,
+    "cities": {
+     "Prontera": {
+      "taps": 150.0,
+      "stones": 4500.0,
+      "stone": "Lv.1 Muspellium"
+     },
+     "Morroc": {
+      "taps": 75.0,
+      "stones": 150.0,
+      "stone": "Hardening Enchantment Stone"
+     },
+     "Alberta": {
+      "taps": 37.5,
+      "stones": 75.0,
+      "stone": "Crystallize Enchantment Stone"
+     },
+     "Izlude": {
+      "taps": 150.0,
+      "stones": 300.0,
+      "stone": "Toughening Enchantment Stone"
+     },
+     "Glast Heim": {
+      "taps": 4.7,
+      "stones": 9.4,
+      "stone": "Illumination Enchantment Stone"
+     },
+     "Geffen": {
+      "taps": 9.4,
+      "stones": 18.8,
+      "stone": "Praying Enchantment Stone"
+     },
+     "Payon": {
+      "taps": 18.8,
+      "stones": 37.5,
+      "stone": "Petrifying Enchantment Stone"
+     },
+     "Al De Baran": {
+      "taps": 4.7,
+      "stones": 9.4,
+      "stone": "Solar Enchantment Stone"
+     }
+    }
+   },
+   "accessory": {
+    "points": 150,
+    "cities": {
+     "Prontera": {
+      "taps": 150.0,
+      "stones": 4500.0,
+      "stone": "Lv.1 Muspellium"
+     },
+     "Morroc": {
+      "taps": 75.0,
+      "stones": 150.0,
+      "stone": "Gold Enchantment Stone"
+     },
+     "Izlude": {
+      "taps": 150.0,
+      "stones": 300.0,
+      "stone": "Secret Enchantment Stone"
+     },
+     "Alberta": {
+      "taps": 37.5,
+      "stones": 75.0,
+      "stone": "Glowing Star Enchantment Stone"
+     },
+     "Glast Heim": {
+      "taps": 4.7,
+      "stones": 9.4,
+      "stone": "Steel Dust Enchantment Stone"
+     },
+     "Payon": {
+      "taps": 18.8,
+      "stones": 37.5,
+      "stone": "Silverspirit Enchantment Stone"
+     },
+     "Geffen": {
+      "taps": 9.4,
+      "stones": 18.8,
+      "stone": "Rosecrystal Enchantment Stone"
+     },
+     "Al De Baran": {
+      "taps": 4.7,
+      "stones": 9.4,
+      "stone": "Starlight Enchantment Stone"
+     }
+    }
+   }
+  },
+  "6": {
+   "weapon": {
+    "points": 250,
+    "cities": {
+     "Prontera": {
+      "taps": 83.3,
+      "stones": 7500.0,
+      "stone": "Lv.1 Muspellium"
+     },
+     "Izlude": {
+      "taps": 83.3,
+      "stones": 500.0,
+      "stone": "Sharpening Enchantment Stone"
+     },
+     "Morroc": {
+      "taps": 41.7,
+      "stones": 250.0,
+      "stone": "Blazing Enchantment Stone"
+     },
+     "Alberta": {
+      "taps": 20.8,
+      "stones": 125.0,
+      "stone": "Tidal Current Enchantment Stone"
+     },
+     "Glast Heim": {
+      "taps": 2.6,
+      "stones": 15.6,
+      "stone": "Lost Spirit Enchantment Stone"
+     },
+     "Al De Baran": {
+      "taps": 2.6,
+      "stones": 15.6,
+      "stone": "Dark Stillness Enchantment Stone"
+     },
+     "Payon": {
+      "taps": 10.4,
+      "stones": 62.5,
+      "stone": "Gloomy Enchantment Stone"
+     },
+     "Geffen": {
+      "taps": 5.2,
+      "stones": 31.2,
+      "stone": "Cold Enchantment Stone"
+     }
+    }
+   },
+   "armor": {
+    "points": 250,
+    "cities": {
+     "Prontera": {
+      "taps": 250.0,
+      "stones": 7500.0,
+      "stone": "Lv.1 Muspellium"
+     },
+     "Morroc": {
+      "taps": 125.0,
+      "stones": 250.0,
+      "stone": "Hardening Enchantment Stone"
+     },
+     "Alberta": {
+      "taps": 62.5,
+      "stones": 125.0,
+      "stone": "Crystallize Enchantment Stone"
+     },
+     "Izlude": {
+      "taps": 250.0,
+      "stones": 500.0,
+      "stone": "Toughening Enchantment Stone"
+     },
+     "Glast Heim": {
+      "taps": 7.8,
+      "stones": 15.6,
+      "stone": "Illumination Enchantment Stone"
+     },
+     "Geffen": {
+      "taps": 15.6,
+      "stones": 31.2,
+      "stone": "Praying Enchantment Stone"
+     },
+     "Payon": {
+      "taps": 31.2,
+      "stones": 62.5,
+      "stone": "Petrifying Enchantment Stone"
+     },
+     "Al De Baran": {
+      "taps": 7.8,
+      "stones": 15.6,
+      "stone": "Solar Enchantment Stone"
+     }
+    }
+   },
+   "accessory": {
+    "points": 250,
+    "cities": {
+     "Prontera": {
+      "taps": 250.0,
+      "stones": 7500.0,
+      "stone": "Lv.1 Muspellium"
+     },
+     "Morroc": {
+      "taps": 125.0,
+      "stones": 250.0,
+      "stone": "Gold Enchantment Stone"
+     },
+     "Izlude": {
+      "taps": 250.0,
+      "stones": 500.0,
+      "stone": "Secret Enchantment Stone"
+     },
+     "Alberta": {
+      "taps": 62.5,
+      "stones": 125.0,
+      "stone": "Glowing Star Enchantment Stone"
+     },
+     "Glast Heim": {
+      "taps": 7.8,
+      "stones": 15.6,
+      "stone": "Steel Dust Enchantment Stone"
+     },
+     "Payon": {
+      "taps": 31.2,
+      "stones": 62.5,
+      "stone": "Silverspirit Enchantment Stone"
+     },
+     "Geffen": {
+      "taps": 15.6,
+      "stones": 31.2,
+      "stone": "Rosecrystal Enchantment Stone"
+     },
+     "Al De Baran": {
+      "taps": 7.8,
+      "stones": 15.6,
+      "stone": "Starlight Enchantment Stone"
+     }
+    }
+   }
+  },
+  "7": {
+   "weapon": {
+    "points": 400,
+    "cities": {
+     "Prontera": {
+      "taps": 133.3,
+      "stones": 12000.0,
+      "stone": "Lv.1 Muspellium"
+     },
+     "Izlude": {
+      "taps": 133.3,
+      "stones": 800.0,
+      "stone": "Sharpening Enchantment Stone"
+     },
+     "Morroc": {
+      "taps": 66.7,
+      "stones": 400.0,
+      "stone": "Blazing Enchantment Stone"
+     },
+     "Alberta": {
+      "taps": 33.3,
+      "stones": 200.0,
+      "stone": "Tidal Current Enchantment Stone"
+     },
+     "Glast Heim": {
+      "taps": 4.2,
+      "stones": 25.0,
+      "stone": "Lost Spirit Enchantment Stone"
+     },
+     "Al De Baran": {
+      "taps": 4.2,
+      "stones": 25.0,
+      "stone": "Dark Stillness Enchantment Stone"
+     },
+     "Payon": {
+      "taps": 16.7,
+      "stones": 100.0,
+      "stone": "Gloomy Enchantment Stone"
+     },
+     "Geffen": {
+      "taps": 8.3,
+      "stones": 50.0,
+      "stone": "Cold Enchantment Stone"
+     }
+    }
+   },
+   "armor": {
+    "points": 400,
+    "cities": {
+     "Prontera": {
+      "taps": 400.0,
+      "stones": 12000.0,
+      "stone": "Lv.1 Muspellium"
+     },
+     "Morroc": {
+      "taps": 200.0,
+      "stones": 400.0,
+      "stone": "Hardening Enchantment Stone"
+     },
+     "Alberta": {
+      "taps": 100.0,
+      "stones": 200.0,
+      "stone": "Crystallize Enchantment Stone"
+     },
+     "Izlude": {
+      "taps": 400.0,
+      "stones": 800.0,
+      "stone": "Toughening Enchantment Stone"
+     },
+     "Glast Heim": {
+      "taps": 12.5,
+      "stones": 25.0,
+      "stone": "Illumination Enchantment Stone"
+     },
+     "Geffen": {
+      "taps": 25.0,
+      "stones": 50.0,
+      "stone": "Praying Enchantment Stone"
+     },
+     "Payon": {
+      "taps": 50.0,
+      "stones": 100.0,
+      "stone": "Petrifying Enchantment Stone"
+     },
+     "Al De Baran": {
+      "taps": 12.5,
+      "stones": 25.0,
+      "stone": "Solar Enchantment Stone"
+     }
+    }
+   },
+   "accessory": {
+    "points": 400,
+    "cities": {
+     "Prontera": {
+      "taps": 400.0,
+      "stones": 12000.0,
+      "stone": "Lv.1 Muspellium"
+     },
+     "Morroc": {
+      "taps": 200.0,
+      "stones": 400.0,
+      "stone": "Gold Enchantment Stone"
+     },
+     "Izlude": {
+      "taps": 400.0,
+      "stones": 800.0,
+      "stone": "Secret Enchantment Stone"
+     },
+     "Alberta": {
+      "taps": 100.0,
+      "stones": 200.0,
+      "stone": "Glowing Star Enchantment Stone"
+     },
+     "Glast Heim": {
+      "taps": 12.5,
+      "stones": 25.0,
+      "stone": "Steel Dust Enchantment Stone"
+     },
+     "Payon": {
+      "taps": 50.0,
+      "stones": 100.0,
+      "stone": "Silverspirit Enchantment Stone"
+     },
+     "Geffen": {
+      "taps": 25.0,
+      "stones": 50.0,
+      "stone": "Rosecrystal Enchantment Stone"
+     },
+     "Al De Baran": {
+      "taps": 12.5,
+      "stones": 25.0,
+      "stone": "Starlight Enchantment Stone"
+     }
+    }
+   }
+  },
+  "8": {
+   "weapon": {
+    "points": 600,
+    "cities": {
+     "Prontera": {
+      "taps": 200.0,
+      "stones": 18000.0,
+      "stone": "Lv.1 Muspellium"
+     },
+     "Izlude": {
+      "taps": 200.0,
+      "stones": 1200.0,
+      "stone": "Sharpening Enchantment Stone"
+     },
+     "Morroc": {
+      "taps": 100.0,
+      "stones": 600.0,
+      "stone": "Blazing Enchantment Stone"
+     },
+     "Alberta": {
+      "taps": 50.0,
+      "stones": 300.0,
+      "stone": "Tidal Current Enchantment Stone"
+     },
+     "Glast Heim": {
+      "taps": 6.2,
+      "stones": 37.5,
+      "stone": "Lost Spirit Enchantment Stone"
+     },
+     "Al De Baran": {
+      "taps": 6.2,
+      "stones": 37.5,
+      "stone": "Dark Stillness Enchantment Stone"
+     },
+     "Payon": {
+      "taps": 25.0,
+      "stones": 150.0,
+      "stone": "Gloomy Enchantment Stone"
+     },
+     "Geffen": {
+      "taps": 12.5,
+      "stones": 75.0,
+      "stone": "Cold Enchantment Stone"
+     }
+    }
+   },
+   "armor": {
+    "points": 600,
+    "cities": {
+     "Prontera": {
+      "taps": 600.0,
+      "stones": 18000.0,
+      "stone": "Lv.1 Muspellium"
+     },
+     "Morroc": {
+      "taps": 300.0,
+      "stones": 600.0,
+      "stone": "Hardening Enchantment Stone"
+     },
+     "Alberta": {
+      "taps": 150.0,
+      "stones": 300.0,
+      "stone": "Crystallize Enchantment Stone"
+     },
+     "Izlude": {
+      "taps": 600.0,
+      "stones": 1200.0,
+      "stone": "Toughening Enchantment Stone"
+     },
+     "Glast Heim": {
+      "taps": 18.8,
+      "stones": 37.5,
+      "stone": "Illumination Enchantment Stone"
+     },
+     "Geffen": {
+      "taps": 37.5,
+      "stones": 75.0,
+      "stone": "Praying Enchantment Stone"
+     },
+     "Payon": {
+      "taps": 75.0,
+      "stones": 150.0,
+      "stone": "Petrifying Enchantment Stone"
+     },
+     "Al De Baran": {
+      "taps": 18.8,
+      "stones": 37.5,
+      "stone": "Solar Enchantment Stone"
+     }
+    }
+   },
+   "accessory": {
+    "points": 600,
+    "cities": {
+     "Prontera": {
+      "taps": 600.0,
+      "stones": 18000.0,
+      "stone": "Lv.1 Muspellium"
+     },
+     "Morroc": {
+      "taps": 300.0,
+      "stones": 600.0,
+      "stone": "Gold Enchantment Stone"
+     },
+     "Izlude": {
+      "taps": 600.0,
+      "stones": 1200.0,
+      "stone": "Secret Enchantment Stone"
+     },
+     "Alberta": {
+      "taps": 150.0,
+      "stones": 300.0,
+      "stone": "Glowing Star Enchantment Stone"
+     },
+     "Glast Heim": {
+      "taps": 18.8,
+      "stones": 37.5,
+      "stone": "Steel Dust Enchantment Stone"
+     },
+     "Payon": {
+      "taps": 75.0,
+      "stones": 150.0,
+      "stone": "Silverspirit Enchantment Stone"
+     },
+     "Geffen": {
+      "taps": 37.5,
+      "stones": 75.0,
+      "stone": "Rosecrystal Enchantment Stone"
+     },
+     "Al De Baran": {
+      "taps": 18.8,
+      "stones": 37.5,
+      "stone": "Starlight Enchantment Stone"
+     }
+    }
+   }
+  },
+  "9": {
+   "weapon": {
+    "points": 850,
+    "cities": {
+     "Prontera": {
+      "taps": 283.3,
+      "stones": 25500.0,
+      "stone": "Lv.1 Muspellium"
+     },
+     "Izlude": {
+      "taps": 283.3,
+      "stones": 1700.0,
+      "stone": "Sharpening Enchantment Stone"
+     },
+     "Morroc": {
+      "taps": 141.7,
+      "stones": 850.0,
+      "stone": "Blazing Enchantment Stone"
+     },
+     "Alberta": {
+      "taps": 70.8,
+      "stones": 425.0,
+      "stone": "Tidal Current Enchantment Stone"
+     },
+     "Glast Heim": {
+      "taps": 8.9,
+      "stones": 53.1,
+      "stone": "Lost Spirit Enchantment Stone"
+     },
+     "Al De Baran": {
+      "taps": 8.9,
+      "stones": 53.1,
+      "stone": "Dark Stillness Enchantment Stone"
+     },
+     "Payon": {
+      "taps": 35.4,
+      "stones": 212.5,
+      "stone": "Gloomy Enchantment Stone"
+     },
+     "Geffen": {
+      "taps": 17.7,
+      "stones": 106.2,
+      "stone": "Cold Enchantment Stone"
+     }
+    }
+   },
+   "armor": {
+    "points": 850,
+    "cities": {
+     "Prontera": {
+      "taps": 850.0,
+      "stones": 25500.0,
+      "stone": "Lv.1 Muspellium"
+     },
+     "Morroc": {
+      "taps": 425.0,
+      "stones": 850.0,
+      "stone": "Hardening Enchantment Stone"
+     },
+     "Alberta": {
+      "taps": 212.5,
+      "stones": 425.0,
+      "stone": "Crystallize Enchantment Stone"
+     },
+     "Izlude": {
+      "taps": 850.0,
+      "stones": 1700.0,
+      "stone": "Toughening Enchantment Stone"
+     },
+     "Glast Heim": {
+      "taps": 26.6,
+      "stones": 53.1,
+      "stone": "Illumination Enchantment Stone"
+     },
+     "Geffen": {
+      "taps": 53.1,
+      "stones": 106.2,
+      "stone": "Praying Enchantment Stone"
+     },
+     "Payon": {
+      "taps": 106.2,
+      "stones": 212.5,
+      "stone": "Petrifying Enchantment Stone"
+     },
+     "Al De Baran": {
+      "taps": 26.6,
+      "stones": 53.1,
+      "stone": "Solar Enchantment Stone"
+     }
+    }
+   },
+   "accessory": {
+    "points": 850,
+    "cities": {
+     "Prontera": {
+      "taps": 850.0,
+      "stones": 25500.0,
+      "stone": "Lv.1 Muspellium"
+     },
+     "Morroc": {
+      "taps": 425.0,
+      "stones": 850.0,
+      "stone": "Gold Enchantment Stone"
+     },
+     "Izlude": {
+      "taps": 850.0,
+      "stones": 1700.0,
+      "stone": "Secret Enchantment Stone"
+     },
+     "Alberta": {
+      "taps": 212.5,
+      "stones": 425.0,
+      "stone": "Glowing Star Enchantment Stone"
+     },
+     "Glast Heim": {
+      "taps": 26.6,
+      "stones": 53.1,
+      "stone": "Steel Dust Enchantment Stone"
+     },
+     "Payon": {
+      "taps": 106.2,
+      "stones": 212.5,
+      "stone": "Silverspirit Enchantment Stone"
+     },
+     "Geffen": {
+      "taps": 53.1,
+      "stones": 106.2,
+      "stone": "Rosecrystal Enchantment Stone"
+     },
+     "Al De Baran": {
+      "taps": 26.6,
+      "stones": 53.1,
+      "stone": "Starlight Enchantment Stone"
+     }
+    }
+   }
+  },
+  "10": {
+   "weapon": {
+    "points": 1150,
+    "cities": {
+     "Prontera": {
+      "taps": 383.3,
+      "stones": 34500.0,
+      "stone": "Lv.1 Muspellium"
+     },
+     "Izlude": {
+      "taps": 383.3,
+      "stones": 2300.0,
+      "stone": "Sharpening Enchantment Stone"
+     },
+     "Morroc": {
+      "taps": 191.7,
+      "stones": 1150.0,
+      "stone": "Blazing Enchantment Stone"
+     },
+     "Alberta": {
+      "taps": 95.8,
+      "stones": 575.0,
+      "stone": "Tidal Current Enchantment Stone"
+     },
+     "Glast Heim": {
+      "taps": 12.0,
+      "stones": 71.9,
+      "stone": "Lost Spirit Enchantment Stone"
+     },
+     "Al De Baran": {
+      "taps": 12.0,
+      "stones": 71.9,
+      "stone": "Dark Stillness Enchantment Stone"
+     },
+     "Payon": {
+      "taps": 47.9,
+      "stones": 287.5,
+      "stone": "Gloomy Enchantment Stone"
+     },
+     "Geffen": {
+      "taps": 24.0,
+      "stones": 143.8,
+      "stone": "Cold Enchantment Stone"
+     }
+    }
+   },
+   "armor": {
+    "points": 1150,
+    "cities": {
+     "Prontera": {
+      "taps": 1150.0,
+      "stones": 34500.0,
+      "stone": "Lv.1 Muspellium"
+     },
+     "Morroc": {
+      "taps": 575.0,
+      "stones": 1150.0,
+      "stone": "Hardening Enchantment Stone"
+     },
+     "Alberta": {
+      "taps": 287.5,
+      "stones": 575.0,
+      "stone": "Crystallize Enchantment Stone"
+     },
+     "Izlude": {
+      "taps": 1150.0,
+      "stones": 2300.0,
+      "stone": "Toughening Enchantment Stone"
+     },
+     "Glast Heim": {
+      "taps": 35.9,
+      "stones": 71.9,
+      "stone": "Illumination Enchantment Stone"
+     },
+     "Geffen": {
+      "taps": 71.9,
+      "stones": 143.8,
+      "stone": "Praying Enchantment Stone"
+     },
+     "Payon": {
+      "taps": 143.8,
+      "stones": 287.5,
+      "stone": "Petrifying Enchantment Stone"
+     },
+     "Al De Baran": {
+      "taps": 35.9,
+      "stones": 71.9,
+      "stone": "Solar Enchantment Stone"
+     }
+    }
+   },
+   "accessory": {
+    "points": 1150,
+    "cities": {
+     "Prontera": {
+      "taps": 1150.0,
+      "stones": 34500.0,
+      "stone": "Lv.1 Muspellium"
+     },
+     "Morroc": {
+      "taps": 575.0,
+      "stones": 1150.0,
+      "stone": "Gold Enchantment Stone"
+     },
+     "Izlude": {
+      "taps": 1150.0,
+      "stones": 2300.0,
+      "stone": "Secret Enchantment Stone"
+     },
+     "Alberta": {
+      "taps": 287.5,
+      "stones": 575.0,
+      "stone": "Glowing Star Enchantment Stone"
+     },
+     "Glast Heim": {
+      "taps": 35.9,
+      "stones": 71.9,
+      "stone": "Steel Dust Enchantment Stone"
+     },
+     "Payon": {
+      "taps": 143.8,
+      "stones": 287.5,
+      "stone": "Silverspirit Enchantment Stone"
+     },
+     "Geffen": {
+      "taps": 71.9,
+      "stones": 143.8,
+      "stone": "Rosecrystal Enchantment Stone"
+     },
+     "Al De Baran": {
+      "taps": 35.9,
+      "stones": 71.9,
+      "stone": "Starlight Enchantment Stone"
+     }
+    }
+   }
+  },
+  "11": {
+   "weapon": {
+    "points": 1550,
+    "cities": {
+     "Prontera": {
+      "taps": 516.7,
+      "stones": 46500.0,
+      "stone": "Lv.1 Muspellium"
+     },
+     "Izlude": {
+      "taps": 516.7,
+      "stones": 3100.0,
+      "stone": "Sharpening Enchantment Stone"
+     },
+     "Morroc": {
+      "taps": 258.3,
+      "stones": 1550.0,
+      "stone": "Blazing Enchantment Stone"
+     },
+     "Alberta": {
+      "taps": 129.2,
+      "stones": 775.0,
+      "stone": "Tidal Current Enchantment Stone"
+     },
+     "Glast Heim": {
+      "taps": 16.1,
+      "stones": 96.9,
+      "stone": "Lost Spirit Enchantment Stone"
+     },
+     "Al De Baran": {
+      "taps": 16.1,
+      "stones": 96.9,
+      "stone": "Dark Stillness Enchantment Stone"
+     },
+     "Payon": {
+      "taps": 64.6,
+      "stones": 387.5,
+      "stone": "Gloomy Enchantment Stone"
+     },
+     "Geffen": {
+      "taps": 32.3,
+      "stones": 193.8,
+      "stone": "Cold Enchantment Stone"
+     }
+    }
+   },
+   "armor": {
+    "points": 1550,
+    "cities": {
+     "Prontera": {
+      "taps": 1550.0,
+      "stones": 46500.0,
+      "stone": "Lv.1 Muspellium"
+     },
+     "Morroc": {
+      "taps": 775.0,
+      "stones": 1550.0,
+      "stone": "Hardening Enchantment Stone"
+     },
+     "Alberta": {
+      "taps": 387.5,
+      "stones": 775.0,
+      "stone": "Crystallize Enchantment Stone"
+     },
+     "Izlude": {
+      "taps": 1550.0,
+      "stones": 3100.0,
+      "stone": "Toughening Enchantment Stone"
+     },
+     "Glast Heim": {
+      "taps": 48.4,
+      "stones": 96.9,
+      "stone": "Illumination Enchantment Stone"
+     },
+     "Geffen": {
+      "taps": 96.9,
+      "stones": 193.8,
+      "stone": "Praying Enchantment Stone"
+     },
+     "Payon": {
+      "taps": 193.8,
+      "stones": 387.5,
+      "stone": "Petrifying Enchantment Stone"
+     },
+     "Al De Baran": {
+      "taps": 48.4,
+      "stones": 96.9,
+      "stone": "Solar Enchantment Stone"
+     }
+    }
+   },
+   "accessory": {
+    "points": 1550,
+    "cities": {
+     "Prontera": {
+      "taps": 1550.0,
+      "stones": 46500.0,
+      "stone": "Lv.1 Muspellium"
+     },
+     "Morroc": {
+      "taps": 775.0,
+      "stones": 1550.0,
+      "stone": "Gold Enchantment Stone"
+     },
+     "Izlude": {
+      "taps": 1550.0,
+      "stones": 3100.0,
+      "stone": "Secret Enchantment Stone"
+     },
+     "Alberta": {
+      "taps": 387.5,
+      "stones": 775.0,
+      "stone": "Glowing Star Enchantment Stone"
+     },
+     "Glast Heim": {
+      "taps": 48.4,
+      "stones": 96.9,
+      "stone": "Steel Dust Enchantment Stone"
+     },
+     "Payon": {
+      "taps": 193.8,
+      "stones": 387.5,
+      "stone": "Silverspirit Enchantment Stone"
+     },
+     "Geffen": {
+      "taps": 96.9,
+      "stones": 193.8,
+      "stone": "Rosecrystal Enchantment Stone"
+     },
+     "Al De Baran": {
+      "taps": 48.4,
+      "stones": 96.9,
+      "stone": "Starlight Enchantment Stone"
+     }
+    }
+   }
+  },
+  "12": {
+   "weapon": {
+    "points": 2050,
+    "cities": {
+     "Prontera": {
+      "taps": 683.3,
+      "stones": 61500.0,
+      "stone": "Lv.1 Muspellium"
+     },
+     "Izlude": {
+      "taps": 683.3,
+      "stones": 4100.0,
+      "stone": "Sharpening Enchantment Stone"
+     },
+     "Morroc": {
+      "taps": 341.7,
+      "stones": 2050.0,
+      "stone": "Blazing Enchantment Stone"
+     },
+     "Alberta": {
+      "taps": 170.8,
+      "stones": 1025.0,
+      "stone": "Tidal Current Enchantment Stone"
+     },
+     "Glast Heim": {
+      "taps": 21.4,
+      "stones": 128.1,
+      "stone": "Lost Spirit Enchantment Stone"
+     },
+     "Al De Baran": {
+      "taps": 21.4,
+      "stones": 128.1,
+      "stone": "Dark Stillness Enchantment Stone"
+     },
+     "Payon": {
+      "taps": 85.4,
+      "stones": 512.5,
+      "stone": "Gloomy Enchantment Stone"
+     },
+     "Geffen": {
+      "taps": 42.7,
+      "stones": 256.2,
+      "stone": "Cold Enchantment Stone"
+     }
+    }
+   },
+   "armor": {
+    "points": 2050,
+    "cities": {
+     "Prontera": {
+      "taps": 2050.0,
+      "stones": 61500.0,
+      "stone": "Lv.1 Muspellium"
+     },
+     "Morroc": {
+      "taps": 1025.0,
+      "stones": 2050.0,
+      "stone": "Hardening Enchantment Stone"
+     },
+     "Alberta": {
+      "taps": 512.5,
+      "stones": 1025.0,
+      "stone": "Crystallize Enchantment Stone"
+     },
+     "Izlude": {
+      "taps": 2050.0,
+      "stones": 4100.0,
+      "stone": "Toughening Enchantment Stone"
+     },
+     "Glast Heim": {
+      "taps": 64.1,
+      "stones": 128.1,
+      "stone": "Illumination Enchantment Stone"
+     },
+     "Geffen": {
+      "taps": 128.1,
+      "stones": 256.2,
+      "stone": "Praying Enchantment Stone"
+     },
+     "Payon": {
+      "taps": 256.2,
+      "stones": 512.5,
+      "stone": "Petrifying Enchantment Stone"
+     },
+     "Al De Baran": {
+      "taps": 64.1,
+      "stones": 128.1,
+      "stone": "Solar Enchantment Stone"
+     }
+    }
+   },
+   "accessory": {
+    "points": 2050,
+    "cities": {
+     "Prontera": {
+      "taps": 2050.0,
+      "stones": 61500.0,
+      "stone": "Lv.1 Muspellium"
+     },
+     "Morroc": {
+      "taps": 1025.0,
+      "stones": 2050.0,
+      "stone": "Gold Enchantment Stone"
+     },
+     "Izlude": {
+      "taps": 2050.0,
+      "stones": 4100.0,
+      "stone": "Secret Enchantment Stone"
+     },
+     "Alberta": {
+      "taps": 512.5,
+      "stones": 1025.0,
+      "stone": "Glowing Star Enchantment Stone"
+     },
+     "Glast Heim": {
+      "taps": 64.1,
+      "stones": 128.1,
+      "stone": "Steel Dust Enchantment Stone"
+     },
+     "Payon": {
+      "taps": 256.2,
+      "stones": 512.5,
+      "stone": "Silverspirit Enchantment Stone"
+     },
+     "Geffen": {
+      "taps": 128.1,
+      "stones": 256.2,
+      "stone": "Rosecrystal Enchantment Stone"
+     },
+     "Al De Baran": {
+      "taps": 64.1,
+      "stones": 128.1,
+      "stone": "Starlight Enchantment Stone"
+     }
+    }
+   }
+  },
+  "13": {
+   "weapon": {
+    "points": 2800,
+    "cities": {
+     "Prontera": {
+      "taps": 933.3,
+      "stones": 84000.0,
+      "stone": "Lv.1 Muspellium"
+     },
+     "Izlude": {
+      "taps": 933.3,
+      "stones": 5600.0,
+      "stone": "Sharpening Enchantment Stone"
+     },
+     "Morroc": {
+      "taps": 466.7,
+      "stones": 2800.0,
+      "stone": "Blazing Enchantment Stone"
+     },
+     "Alberta": {
+      "taps": 233.3,
+      "stones": 1400.0,
+      "stone": "Tidal Current Enchantment Stone"
+     },
+     "Glast Heim": {
+      "taps": 29.2,
+      "stones": 175.0,
+      "stone": "Lost Spirit Enchantment Stone"
+     },
+     "Al De Baran": {
+      "taps": 29.2,
+      "stones": 175.0,
+      "stone": "Dark Stillness Enchantment Stone"
+     },
+     "Payon": {
+      "taps": 116.7,
+      "stones": 700.0,
+      "stone": "Gloomy Enchantment Stone"
+     },
+     "Geffen": {
+      "taps": 58.3,
+      "stones": 350.0,
+      "stone": "Cold Enchantment Stone"
+     }
+    }
+   },
+   "armor": {
+    "points": 2800,
+    "cities": {
+     "Prontera": {
+      "taps": 2800.0,
+      "stones": 84000.0,
+      "stone": "Lv.1 Muspellium"
+     },
+     "Morroc": {
+      "taps": 1400.0,
+      "stones": 2800.0,
+      "stone": "Hardening Enchantment Stone"
+     },
+     "Alberta": {
+      "taps": 700.0,
+      "stones": 1400.0,
+      "stone": "Crystallize Enchantment Stone"
+     },
+     "Izlude": {
+      "taps": 2800.0,
+      "stones": 5600.0,
+      "stone": "Toughening Enchantment Stone"
+     },
+     "Glast Heim": {
+      "taps": 87.5,
+      "stones": 175.0,
+      "stone": "Illumination Enchantment Stone"
+     },
+     "Geffen": {
+      "taps": 175.0,
+      "stones": 350.0,
+      "stone": "Praying Enchantment Stone"
+     },
+     "Payon": {
+      "taps": 350.0,
+      "stones": 700.0,
+      "stone": "Petrifying Enchantment Stone"
+     },
+     "Al De Baran": {
+      "taps": 87.5,
+      "stones": 175.0,
+      "stone": "Solar Enchantment Stone"
+     }
+    }
+   },
+   "accessory": {
+    "points": 2800,
+    "cities": {
+     "Prontera": {
+      "taps": 2800.0,
+      "stones": 84000.0,
+      "stone": "Lv.1 Muspellium"
+     },
+     "Morroc": {
+      "taps": 1400.0,
+      "stones": 2800.0,
+      "stone": "Gold Enchantment Stone"
+     },
+     "Izlude": {
+      "taps": 2800.0,
+      "stones": 5600.0,
+      "stone": "Secret Enchantment Stone"
+     },
+     "Alberta": {
+      "taps": 700.0,
+      "stones": 1400.0,
+      "stone": "Glowing Star Enchantment Stone"
+     },
+     "Glast Heim": {
+      "taps": 87.5,
+      "stones": 175.0,
+      "stone": "Steel Dust Enchantment Stone"
+     },
+     "Payon": {
+      "taps": 350.0,
+      "stones": 700.0,
+      "stone": "Silverspirit Enchantment Stone"
+     },
+     "Geffen": {
+      "taps": 175.0,
+      "stones": 350.0,
+      "stone": "Rosecrystal Enchantment Stone"
+     },
+     "Al De Baran": {
+      "taps": 87.5,
+      "stones": 175.0,
+      "stone": "Starlight Enchantment Stone"
+     }
+    }
+   }
+  },
+  "14": {
+   "weapon": {
+    "points": 3800,
+    "cities": {
+     "Prontera": {
+      "taps": 1266.7,
+      "stones": 114000.0,
+      "stone": "Lv.1 Muspellium"
+     },
+     "Izlude": {
+      "taps": 1266.7,
+      "stones": 7600.0,
+      "stone": "Sharpening Enchantment Stone"
+     },
+     "Morroc": {
+      "taps": 633.3,
+      "stones": 3800.0,
+      "stone": "Blazing Enchantment Stone"
+     },
+     "Alberta": {
+      "taps": 316.7,
+      "stones": 1900.0,
+      "stone": "Tidal Current Enchantment Stone"
+     },
+     "Glast Heim": {
+      "taps": 39.6,
+      "stones": 237.5,
+      "stone": "Lost Spirit Enchantment Stone"
+     },
+     "Al De Baran": {
+      "taps": 39.6,
+      "stones": 237.5,
+      "stone": "Dark Stillness Enchantment Stone"
+     },
+     "Payon": {
+      "taps": 158.3,
+      "stones": 950.0,
+      "stone": "Gloomy Enchantment Stone"
+     },
+     "Geffen": {
+      "taps": 79.2,
+      "stones": 475.0,
+      "stone": "Cold Enchantment Stone"
+     }
+    }
+   },
+   "armor": {
+    "points": 3800,
+    "cities": {
+     "Prontera": {
+      "taps": 3800.0,
+      "stones": 114000.0,
+      "stone": "Lv.1 Muspellium"
+     },
+     "Morroc": {
+      "taps": 1900.0,
+      "stones": 3800.0,
+      "stone": "Hardening Enchantment Stone"
+     },
+     "Alberta": {
+      "taps": 950.0,
+      "stones": 1900.0,
+      "stone": "Crystallize Enchantment Stone"
+     },
+     "Izlude": {
+      "taps": 3800.0,
+      "stones": 7600.0,
+      "stone": "Toughening Enchantment Stone"
+     },
+     "Glast Heim": {
+      "taps": 118.8,
+      "stones": 237.5,
+      "stone": "Illumination Enchantment Stone"
+     },
+     "Geffen": {
+      "taps": 237.5,
+      "stones": 475.0,
+      "stone": "Praying Enchantment Stone"
+     },
+     "Payon": {
+      "taps": 475.0,
+      "stones": 950.0,
+      "stone": "Petrifying Enchantment Stone"
+     },
+     "Al De Baran": {
+      "taps": 118.8,
+      "stones": 237.5,
+      "stone": "Solar Enchantment Stone"
+     }
+    }
+   },
+   "accessory": {
+    "points": 3800,
+    "cities": {
+     "Prontera": {
+      "taps": 3800.0,
+      "stones": 114000.0,
+      "stone": "Lv.1 Muspellium"
+     },
+     "Morroc": {
+      "taps": 1900.0,
+      "stones": 3800.0,
+      "stone": "Gold Enchantment Stone"
+     },
+     "Izlude": {
+      "taps": 3800.0,
+      "stones": 7600.0,
+      "stone": "Secret Enchantment Stone"
+     },
+     "Alberta": {
+      "taps": 950.0,
+      "stones": 1900.0,
+      "stone": "Glowing Star Enchantment Stone"
+     },
+     "Glast Heim": {
+      "taps": 118.8,
+      "stones": 237.5,
+      "stone": "Steel Dust Enchantment Stone"
+     },
+     "Payon": {
+      "taps": 475.0,
+      "stones": 950.0,
+      "stone": "Silverspirit Enchantment Stone"
+     },
+     "Geffen": {
+      "taps": 237.5,
+      "stones": 475.0,
+      "stone": "Rosecrystal Enchantment Stone"
+     },
+     "Al De Baran": {
+      "taps": 118.8,
+      "stones": 237.5,
+      "stone": "Starlight Enchantment Stone"
+     }
+    }
+   }
+  },
+  "15": {
+   "weapon": {
+    "points": 5050,
+    "cities": {
+     "Prontera": {
+      "taps": 1683.3,
+      "stones": 151500.0,
+      "stone": "Lv.1 Muspellium"
+     },
+     "Izlude": {
+      "taps": 1683.3,
+      "stones": 10100.0,
+      "stone": "Sharpening Enchantment Stone"
+     },
+     "Morroc": {
+      "taps": 841.7,
+      "stones": 5050.0,
+      "stone": "Blazing Enchantment Stone"
+     },
+     "Alberta": {
+      "taps": 420.8,
+      "stones": 2525.0,
+      "stone": "Tidal Current Enchantment Stone"
+     },
+     "Glast Heim": {
+      "taps": 52.6,
+      "stones": 315.6,
+      "stone": "Lost Spirit Enchantment Stone"
+     },
+     "Al De Baran": {
+      "taps": 52.6,
+      "stones": 315.6,
+      "stone": "Dark Stillness Enchantment Stone"
+     },
+     "Payon": {
+      "taps": 210.4,
+      "stones": 1262.5,
+      "stone": "Gloomy Enchantment Stone"
+     },
+     "Geffen": {
+      "taps": 105.2,
+      "stones": 631.2,
+      "stone": "Cold Enchantment Stone"
+     }
+    }
+   },
+   "armor": {
+    "points": 5050,
+    "cities": {
+     "Prontera": {
+      "taps": 5050.0,
+      "stones": 151500.0,
+      "stone": "Lv.1 Muspellium"
+     },
+     "Morroc": {
+      "taps": 2525.0,
+      "stones": 5050.0,
+      "stone": "Hardening Enchantment Stone"
+     },
+     "Alberta": {
+      "taps": 1262.5,
+      "stones": 2525.0,
+      "stone": "Crystallize Enchantment Stone"
+     },
+     "Izlude": {
+      "taps": 5050.0,
+      "stones": 10100.0,
+      "stone": "Toughening Enchantment Stone"
+     },
+     "Glast Heim": {
+      "taps": 157.8,
+      "stones": 315.6,
+      "stone": "Illumination Enchantment Stone"
+     },
+     "Geffen": {
+      "taps": 315.6,
+      "stones": 631.2,
+      "stone": "Praying Enchantment Stone"
+     },
+     "Payon": {
+      "taps": 631.2,
+      "stones": 1262.5,
+      "stone": "Petrifying Enchantment Stone"
+     },
+     "Al De Baran": {
+      "taps": 157.8,
+      "stones": 315.6,
+      "stone": "Solar Enchantment Stone"
+     }
+    }
+   },
+   "accessory": {
+    "points": 5050,
+    "cities": {
+     "Prontera": {
+      "taps": 5050.0,
+      "stones": 151500.0,
+      "stone": "Lv.1 Muspellium"
+     },
+     "Morroc": {
+      "taps": 2525.0,
+      "stones": 5050.0,
+      "stone": "Gold Enchantment Stone"
+     },
+     "Izlude": {
+      "taps": 5050.0,
+      "stones": 10100.0,
+      "stone": "Secret Enchantment Stone"
+     },
+     "Alberta": {
+      "taps": 1262.5,
+      "stones": 2525.0,
+      "stone": "Glowing Star Enchantment Stone"
+     },
+     "Glast Heim": {
+      "taps": 157.8,
+      "stones": 315.6,
+      "stone": "Steel Dust Enchantment Stone"
+     },
+     "Payon": {
+      "taps": 631.2,
+      "stones": 1262.5,
+      "stone": "Silverspirit Enchantment Stone"
+     },
+     "Geffen": {
+      "taps": 315.6,
+      "stones": 631.2,
+      "stone": "Rosecrystal Enchantment Stone"
+     },
+     "Al De Baran": {
+      "taps": 157.8,
+      "stones": 315.6,
+      "stone": "Starlight Enchantment Stone"
+     }
+    }
+   }
+  },
+  "16": {
+   "weapon": {
+    "points": 6550,
+    "cities": {
+     "Prontera": {
+      "taps": 2183.3,
+      "stones": 196500.0,
+      "stone": "Lv.1 Muspellium"
+     },
+     "Izlude": {
+      "taps": 2183.3,
+      "stones": 13100.0,
+      "stone": "Sharpening Enchantment Stone"
+     },
+     "Morroc": {
+      "taps": 1091.7,
+      "stones": 6550.0,
+      "stone": "Blazing Enchantment Stone"
+     },
+     "Alberta": {
+      "taps": 545.8,
+      "stones": 3275.0,
+      "stone": "Tidal Current Enchantment Stone"
+     },
+     "Glast Heim": {
+      "taps": 68.2,
+      "stones": 409.4,
+      "stone": "Lost Spirit Enchantment Stone"
+     },
+     "Al De Baran": {
+      "taps": 68.2,
+      "stones": 409.4,
+      "stone": "Dark Stillness Enchantment Stone"
+     },
+     "Payon": {
+      "taps": 272.9,
+      "stones": 1637.5,
+      "stone": "Gloomy Enchantment Stone"
+     },
+     "Geffen": {
+      "taps": 136.5,
+      "stones": 818.8,
+      "stone": "Cold Enchantment Stone"
+     }
+    }
+   },
+   "armor": {
+    "points": 6550,
+    "cities": {
+     "Prontera": {
+      "taps": 6550.0,
+      "stones": 196500.0,
+      "stone": "Lv.1 Muspellium"
+     },
+     "Morroc": {
+      "taps": 3275.0,
+      "stones": 6550.0,
+      "stone": "Hardening Enchantment Stone"
+     },
+     "Alberta": {
+      "taps": 1637.5,
+      "stones": 3275.0,
+      "stone": "Crystallize Enchantment Stone"
+     },
+     "Izlude": {
+      "taps": 6550.0,
+      "stones": 13100.0,
+      "stone": "Toughening Enchantment Stone"
+     },
+     "Glast Heim": {
+      "taps": 204.7,
+      "stones": 409.4,
+      "stone": "Illumination Enchantment Stone"
+     },
+     "Geffen": {
+      "taps": 409.4,
+      "stones": 818.8,
+      "stone": "Praying Enchantment Stone"
+     },
+     "Payon": {
+      "taps": 818.8,
+      "stones": 1637.5,
+      "stone": "Petrifying Enchantment Stone"
+     },
+     "Al De Baran": {
+      "taps": 204.7,
+      "stones": 409.4,
+      "stone": "Solar Enchantment Stone"
+     }
+    }
+   },
+   "accessory": {
+    "points": 6550,
+    "cities": {
+     "Prontera": {
+      "taps": 6550.0,
+      "stones": 196500.0,
+      "stone": "Lv.1 Muspellium"
+     },
+     "Morroc": {
+      "taps": 3275.0,
+      "stones": 6550.0,
+      "stone": "Gold Enchantment Stone"
+     },
+     "Izlude": {
+      "taps": 6550.0,
+      "stones": 13100.0,
+      "stone": "Secret Enchantment Stone"
+     },
+     "Alberta": {
+      "taps": 1637.5,
+      "stones": 3275.0,
+      "stone": "Glowing Star Enchantment Stone"
+     },
+     "Glast Heim": {
+      "taps": 204.7,
+      "stones": 409.4,
+      "stone": "Steel Dust Enchantment Stone"
+     },
+     "Payon": {
+      "taps": 818.8,
+      "stones": 1637.5,
+      "stone": "Silverspirit Enchantment Stone"
+     },
+     "Geffen": {
+      "taps": 409.4,
+      "stones": 818.8,
+      "stone": "Rosecrystal Enchantment Stone"
+     },
+     "Al De Baran": {
+      "taps": 204.7,
+      "stones": 409.4,
+      "stone": "Starlight Enchantment Stone"
+     }
+    }
+   }
+  },
+  "17": {
+   "weapon": {
+    "points": 8300,
+    "cities": {
+     "Prontera": {
+      "taps": 2766.7,
+      "stones": 249000.0,
+      "stone": "Lv.1 Muspellium"
+     },
+     "Izlude": {
+      "taps": 2766.7,
+      "stones": 16600.0,
+      "stone": "Sharpening Enchantment Stone"
+     },
+     "Morroc": {
+      "taps": 1383.3,
+      "stones": 8300.0,
+      "stone": "Blazing Enchantment Stone"
+     },
+     "Alberta": {
+      "taps": 691.7,
+      "stones": 4150.0,
+      "stone": "Tidal Current Enchantment Stone"
+     },
+     "Glast Heim": {
+      "taps": 86.5,
+      "stones": 518.8,
+      "stone": "Lost Spirit Enchantment Stone"
+     },
+     "Al De Baran": {
+      "taps": 86.5,
+      "stones": 518.8,
+      "stone": "Dark Stillness Enchantment Stone"
+     },
+     "Payon": {
+      "taps": 345.8,
+      "stones": 2075.0,
+      "stone": "Gloomy Enchantment Stone"
+     },
+     "Geffen": {
+      "taps": 172.9,
+      "stones": 1037.5,
+      "stone": "Cold Enchantment Stone"
+     }
+    }
+   },
+   "armor": {
+    "points": 8300,
+    "cities": {
+     "Prontera": {
+      "taps": 8300.0,
+      "stones": 249000.0,
+      "stone": "Lv.1 Muspellium"
+     },
+     "Morroc": {
+      "taps": 4150.0,
+      "stones": 8300.0,
+      "stone": "Hardening Enchantment Stone"
+     },
+     "Alberta": {
+      "taps": 2075.0,
+      "stones": 4150.0,
+      "stone": "Crystallize Enchantment Stone"
+     },
+     "Izlude": {
+      "taps": 8300.0,
+      "stones": 16600.0,
+      "stone": "Toughening Enchantment Stone"
+     },
+     "Glast Heim": {
+      "taps": 259.4,
+      "stones": 518.8,
+      "stone": "Illumination Enchantment Stone"
+     },
+     "Geffen": {
+      "taps": 518.8,
+      "stones": 1037.5,
+      "stone": "Praying Enchantment Stone"
+     },
+     "Payon": {
+      "taps": 1037.5,
+      "stones": 2075.0,
+      "stone": "Petrifying Enchantment Stone"
+     },
+     "Al De Baran": {
+      "taps": 259.4,
+      "stones": 518.8,
+      "stone": "Solar Enchantment Stone"
+     }
+    }
+   },
+   "accessory": {
+    "points": 8300,
+    "cities": {
+     "Prontera": {
+      "taps": 8300.0,
+      "stones": 249000.0,
+      "stone": "Lv.1 Muspellium"
+     },
+     "Morroc": {
+      "taps": 4150.0,
+      "stones": 8300.0,
+      "stone": "Gold Enchantment Stone"
+     },
+     "Izlude": {
+      "taps": 8300.0,
+      "stones": 16600.0,
+      "stone": "Secret Enchantment Stone"
+     },
+     "Alberta": {
+      "taps": 2075.0,
+      "stones": 4150.0,
+      "stone": "Glowing Star Enchantment Stone"
+     },
+     "Glast Heim": {
+      "taps": 259.4,
+      "stones": 518.8,
+      "stone": "Steel Dust Enchantment Stone"
+     },
+     "Payon": {
+      "taps": 1037.5,
+      "stones": 2075.0,
+      "stone": "Silverspirit Enchantment Stone"
+     },
+     "Geffen": {
+      "taps": 518.8,
+      "stones": 1037.5,
+      "stone": "Rosecrystal Enchantment Stone"
+     },
+     "Al De Baran": {
+      "taps": 259.4,
+      "stones": 518.8,
+      "stone": "Starlight Enchantment Stone"
+     }
+    }
+   }
+  },
+  "18": {
+   "weapon": {
+    "points": 10300,
+    "cities": {
+     "Prontera": {
+      "taps": 3433.3,
+      "stones": 309000.0,
+      "stone": "Lv.1 Muspellium"
+     },
+     "Izlude": {
+      "taps": 3433.3,
+      "stones": 20600.0,
+      "stone": "Sharpening Enchantment Stone"
+     },
+     "Morroc": {
+      "taps": 1716.7,
+      "stones": 10300.0,
+      "stone": "Blazing Enchantment Stone"
+     },
+     "Alberta": {
+      "taps": 858.3,
+      "stones": 5150.0,
+      "stone": "Tidal Current Enchantment Stone"
+     },
+     "Glast Heim": {
+      "taps": 107.3,
+      "stones": 643.8,
+      "stone": "Lost Spirit Enchantment Stone"
+     },
+     "Al De Baran": {
+      "taps": 107.3,
+      "stones": 643.8,
+      "stone": "Dark Stillness Enchantment Stone"
+     },
+     "Payon": {
+      "taps": 429.2,
+      "stones": 2575.0,
+      "stone": "Gloomy Enchantment Stone"
+     },
+     "Geffen": {
+      "taps": 214.6,
+      "stones": 1287.5,
+      "stone": "Cold Enchantment Stone"
+     }
+    }
+   },
+   "armor": {
+    "points": 10300,
+    "cities": {
+     "Prontera": {
+      "taps": 10300.0,
+      "stones": 309000.0,
+      "stone": "Lv.1 Muspellium"
+     },
+     "Morroc": {
+      "taps": 5150.0,
+      "stones": 10300.0,
+      "stone": "Hardening Enchantment Stone"
+     },
+     "Alberta": {
+      "taps": 2575.0,
+      "stones": 5150.0,
+      "stone": "Crystallize Enchantment Stone"
+     },
+     "Izlude": {
+      "taps": 10300.0,
+      "stones": 20600.0,
+      "stone": "Toughening Enchantment Stone"
+     },
+     "Glast Heim": {
+      "taps": 321.9,
+      "stones": 643.8,
+      "stone": "Illumination Enchantment Stone"
+     },
+     "Geffen": {
+      "taps": 643.8,
+      "stones": 1287.5,
+      "stone": "Praying Enchantment Stone"
+     },
+     "Payon": {
+      "taps": 1287.5,
+      "stones": 2575.0,
+      "stone": "Petrifying Enchantment Stone"
+     },
+     "Al De Baran": {
+      "taps": 321.9,
+      "stones": 643.8,
+      "stone": "Solar Enchantment Stone"
+     }
+    }
+   },
+   "accessory": {
+    "points": 10300,
+    "cities": {
+     "Prontera": {
+      "taps": 10300.0,
+      "stones": 309000.0,
+      "stone": "Lv.1 Muspellium"
+     },
+     "Morroc": {
+      "taps": 5150.0,
+      "stones": 10300.0,
+      "stone": "Gold Enchantment Stone"
+     },
+     "Izlude": {
+      "taps": 10300.0,
+      "stones": 20600.0,
+      "stone": "Secret Enchantment Stone"
+     },
+     "Alberta": {
+      "taps": 2575.0,
+      "stones": 5150.0,
+      "stone": "Glowing Star Enchantment Stone"
+     },
+     "Glast Heim": {
+      "taps": 321.9,
+      "stones": 643.8,
+      "stone": "Steel Dust Enchantment Stone"
+     },
+     "Payon": {
+      "taps": 1287.5,
+      "stones": 2575.0,
+      "stone": "Silverspirit Enchantment Stone"
+     },
+     "Geffen": {
+      "taps": 643.8,
+      "stones": 1287.5,
+      "stone": "Rosecrystal Enchantment Stone"
+     },
+     "Al De Baran": {
+      "taps": 321.9,
+      "stones": 643.8,
+      "stone": "Starlight Enchantment Stone"
+     }
+    }
+   }
+  },
+  "19": {
+   "weapon": {
+    "points": 12550,
+    "cities": {
+     "Prontera": {
+      "taps": 4183.3,
+      "stones": 376500.0,
+      "stone": "Lv.1 Muspellium"
+     },
+     "Izlude": {
+      "taps": 4183.3,
+      "stones": 25100.0,
+      "stone": "Sharpening Enchantment Stone"
+     },
+     "Morroc": {
+      "taps": 2091.7,
+      "stones": 12550.0,
+      "stone": "Blazing Enchantment Stone"
+     },
+     "Alberta": {
+      "taps": 1045.8,
+      "stones": 6275.0,
+      "stone": "Tidal Current Enchantment Stone"
+     },
+     "Glast Heim": {
+      "taps": 130.7,
+      "stones": 784.4,
+      "stone": "Lost Spirit Enchantment Stone"
+     },
+     "Al De Baran": {
+      "taps": 130.7,
+      "stones": 784.4,
+      "stone": "Dark Stillness Enchantment Stone"
+     },
+     "Payon": {
+      "taps": 522.9,
+      "stones": 3137.5,
+      "stone": "Gloomy Enchantment Stone"
+     },
+     "Geffen": {
+      "taps": 261.5,
+      "stones": 1568.8,
+      "stone": "Cold Enchantment Stone"
+     }
+    }
+   },
+   "armor": {
+    "points": 12550,
+    "cities": {
+     "Prontera": {
+      "taps": 12550.0,
+      "stones": 376500.0,
+      "stone": "Lv.1 Muspellium"
+     },
+     "Morroc": {
+      "taps": 6275.0,
+      "stones": 12550.0,
+      "stone": "Hardening Enchantment Stone"
+     },
+     "Alberta": {
+      "taps": 3137.5,
+      "stones": 6275.0,
+      "stone": "Crystallize Enchantment Stone"
+     },
+     "Izlude": {
+      "taps": 12550.0,
+      "stones": 25100.0,
+      "stone": "Toughening Enchantment Stone"
+     },
+     "Glast Heim": {
+      "taps": 392.2,
+      "stones": 784.4,
+      "stone": "Illumination Enchantment Stone"
+     },
+     "Geffen": {
+      "taps": 784.4,
+      "stones": 1568.8,
+      "stone": "Praying Enchantment Stone"
+     },
+     "Payon": {
+      "taps": 1568.8,
+      "stones": 3137.5,
+      "stone": "Petrifying Enchantment Stone"
+     },
+     "Al De Baran": {
+      "taps": 392.2,
+      "stones": 784.4,
+      "stone": "Solar Enchantment Stone"
+     }
+    }
+   },
+   "accessory": {
+    "points": 12550,
+    "cities": {
+     "Prontera": {
+      "taps": 12550.0,
+      "stones": 376500.0,
+      "stone": "Lv.1 Muspellium"
+     },
+     "Morroc": {
+      "taps": 6275.0,
+      "stones": 12550.0,
+      "stone": "Gold Enchantment Stone"
+     },
+     "Izlude": {
+      "taps": 12550.0,
+      "stones": 25100.0,
+      "stone": "Secret Enchantment Stone"
+     },
+     "Alberta": {
+      "taps": 3137.5,
+      "stones": 6275.0,
+      "stone": "Glowing Star Enchantment Stone"
+     },
+     "Glast Heim": {
+      "taps": 392.2,
+      "stones": 784.4,
+      "stone": "Steel Dust Enchantment Stone"
+     },
+     "Payon": {
+      "taps": 1568.8,
+      "stones": 3137.5,
+      "stone": "Silverspirit Enchantment Stone"
+     },
+     "Geffen": {
+      "taps": 784.4,
+      "stones": 1568.8,
+      "stone": "Rosecrystal Enchantment Stone"
+     },
+     "Al De Baran": {
+      "taps": 392.2,
+      "stones": 784.4,
+      "stone": "Starlight Enchantment Stone"
+     }
+    }
+   }
+  }
+ }
+}

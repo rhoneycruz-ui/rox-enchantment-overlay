@@ -57,7 +57,8 @@ def test_overlay_has_native_noninteractive_flags_and_updates_text(app: QApplicat
 
     assert overlay.findChild(QLabel, "itemLabel").text() == "ARMADURA"
     assert "14 → 15" in overlay.findChild(QLabel, "levelLabel").text()
-    assert overlay.findChild(QLabel, "zenyLabel").text() == "7.011.000"
+    assert overlay.findChild(QLabel, "costLabel").text() == "≈ 7.011.000"
+    assert overlay.findChild(QLabel, "tapsLabel").text() == "≈ 1.900"
     currency_icon = overlay.findChild(QLabel, "currencyIcon")
     assert currency_icon.pixmap() is not None
     assert not currency_icon.pixmap().isNull()
@@ -82,3 +83,33 @@ def test_opacity_changes_background_only(app: QApplication) -> None:
 
     with pytest.raises(ValueError):
         overlay.set_opacity(24)
+
+
+def test_overlay_marks_target_low_confidence_and_applies_offset(app: QApplication) -> None:
+    overlay = OverlayWindow()
+    overlay.set_offset(0, 25)
+    estimate = estimate_cost(ItemType.WEAPON, 3, 0.0, 2, target_level=5)
+    overlay.show_snapshot(OverlaySnapshot(estimate, Rect(900, 40, 370, 650), 0.4), Rect(0, 0, 1920, 1080))
+
+    assert overlay.findChild(QLabel, "levelLabel").text() == "3 → 5  (meta)"
+    assert not overlay.findChild(QLabel, "pointsLabel").text().startswith("≈")
+    assert "INCERTA" in overlay.findChild(QLabel, "cityLabel").text()
+    assert overlay.geometry().y() == 40 + 25
+
+
+def test_overlay_shows_stones_and_hides_crystals_outside_prontera(app: QApplication) -> None:
+    overlay = OverlayWindow()
+    estimate = estimate_cost(ItemType.ACCESSORY, 15, 0.0, 88, city="Morroc")
+    overlay.show_snapshot(OverlaySnapshot(estimate, Rect(900, 40, 370, 650), 0.9), Rect(0, 0, 1920, 1080))
+
+    assert overlay.findChild(QLabel, "muspCaption").text() == "PEDRAS"
+    assert overlay.findChild(QLabel, "muspelliumLabel").text() == "5.050"
+    assert overlay.findChild(QLabel, "muspelliumLabel").toolTip() == "Gold Enchantment Stone"
+    assert overlay.findChild(QLabel, "costLabel").isHidden()
+    assert "MORROC" in overlay.findChild(QLabel, "cityLabel").text()
+    overlay.hide_overlay()
+
+    prontera = estimate_cost(ItemType.ACCESSORY, 15, 0.0, 88)
+    overlay.show_snapshot(OverlaySnapshot(prontera, Rect(900, 40, 370, 650), 0.9), Rect(0, 0, 1920, 1080))
+    assert overlay.findChild(QLabel, "muspCaption").text() == "MUSPELLIUM"
+    assert not overlay.findChild(QLabel, "costLabel").isHidden()
