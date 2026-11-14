@@ -42,8 +42,10 @@ jobs:
       - name: Smoke test the executable
         shell: pwsh
         run: |
-          & "dist/ROX Enchantment Overlay/ROX Enchantment Overlay.exe" --self-test
-          if ($LASTEXITCODE -ne 0) { throw "self-test falhou ($LASTEXITCODE)" }
+          # GUI-subsystem exe: "&" would not wait for it, so wait explicitly for the exit code.
+          $exe = Resolve-Path "dist/ROX Enchantment Overlay/ROX Enchantment Overlay.exe"
+          $process = Start-Process -FilePath $exe -ArgumentList "--self-test" -Wait -PassThru
+          if ($process.ExitCode -ne 0) { throw "self-test falhou ($($process.ExitCode))" }
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
