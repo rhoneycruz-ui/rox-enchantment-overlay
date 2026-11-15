@@ -19,6 +19,11 @@ from .text import read_item_type, read_level
 
 class RecognitionPipeline:
     _TITLE_CACHE_MAX_USES = 5
+    # Level digits differ by a single glyph ("15" vs "16"), close enough to pass the
+    # fingerprint check, so a cached level is only trusted briefly, for the same
+    # menu, and never across a level-up (the progress bar drops when it happens).
+    _LEVEL_CACHE_MAX_USES = 2
+    _LEVEL_UP_PROGRESS_DROP = 0.25
 
     def __init__(
         self,
@@ -31,7 +36,9 @@ class RecognitionPipeline:
         self._ocr = ocr
         self._title_cache: tuple[np.ndarray, FieldReading[ItemType]] | None = None
         self._title_cache_uses = 0
-        self._level_cache: tuple[np.ndarray, FieldReading[int]] | None = None
+        self._level_cache: tuple[np.ndarray, FieldReading[int], np.ndarray] | None = None
+        self._level_cache_uses = 0
+        self._last_progress: float | None = None
         self._executor: ThreadPoolExecutor | None = None
         self.panel_absent = False
 
@@ -74,12 +81,24 @@ class RecognitionPipeline:
         used_cached_title = item_type is not None
         if used_cached_title:
             self._title_cache_uses += 1
+        progress = read_progress(regions.progress)
+        level_up = (
+            progress.value is not None
+            and self._last_progress is not None
+            and self._last_progress - progress.value >= self._LEVEL_UP_PROGRESS_DROP
+        )
         level = (
             self._level_cache[1]
             if self._level_cache is not None
+            and not level_up
+            and self._level_cache_uses < self._LEVEL_CACHE_MAX_USES
             and self._matches(level_fingerprint, self._level_cache[0])
+            and self._matches(title_fingerprint, self._level_cache[2])
             else None
         )
+        used_cached_level = level is not None
+        if used_cached_level:
+            self._level_cache_uses += 1
         if item_type is None and level is None and getattr(self._ocr, "supports_parallel", False):
             executor = self._parallel_executor()
             item_future = executor.submit(read_item_type, regions.title, self._ocr)
@@ -94,9 +113,11 @@ class RecognitionPipeline:
             self._title_cache = (title_fingerprint, item_type)
             if not used_cached_title:
                 self._title_cache_uses = 0
-        if level.value is not None:
-            self._level_cache = (level_fingerprint, level)
-        progress = read_progress(regions.progress)
+        if level.value is not None and not used_cached_level:
+            self._level_cache = (level_fingerprint, level, title_fingerprint)
+            self._level_cache_uses = 0
+        if progress.value is not None:
+            self._last_progress = progress.value
         if item_type.value is None or level.value is None or progress.value is None:
             return None
         confidence = min(

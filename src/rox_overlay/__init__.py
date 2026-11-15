@@ -2,7 +2,7 @@
 
 from .domain import CostEstimate, EnchantRequirement, ItemType, estimate_cost, requirement_for
 
-__version__ = "1.2.0"
+__version__ = "1.2.1"
 
 __all__ = [
     "CostEstimate",

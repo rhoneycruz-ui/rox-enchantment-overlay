@@ -103,10 +103,14 @@ def test_reuses_valid_ocr_when_title_and_level_pixels_are_unchanged(monkeypatch)
 
 def test_revalidates_cached_title_after_five_uses(monkeypatch) -> None:
     detection = PanelDetection(PANEL_RECT, 1.0, 0.93)
+    # Frame 1 reads title+level; the level is re-read every third frame (frames 4 and 7)
+    # and the title after five cached uses (frame 7).
     ocr = FakeOcr(
         FieldReading("Armor Level", 0.88, "Armor Level"),
         FieldReading("14", 0.91, "14"),
+        FieldReading("14", 0.91, "14"),
         FieldReading("Accessory Level", 0.88, "Accessory Level"),
+        FieldReading("14", 0.91, "14"),
     )
     monkeypatch.setattr(
         "rox_overlay.recognition.pipeline.read_progress",
@@ -119,4 +123,62 @@ def test_revalidates_cached_title_after_five_uses(monkeypatch) -> None:
 
     assert results[-1] is not None
     assert results[-1].item_type is ItemType.ACCESSORY
-    assert ocr.calls == 3
+    assert ocr.calls == 5
+
+
+class SwitchingPanelDetector:
+    """Same-looking level digits, but the title crop changes with the open menu."""
+
+    def __init__(self) -> None:
+        self.title_seed = 1
+
+    def detect(self, frame: np.ndarray) -> PanelDetection | None:
+        return PanelDetection(PANEL_RECT, 1.0, 0.95)
+
+    def extract_regions(self, frame: np.ndarray, detection: PanelDetection) -> PanelRegions:
+        title = np.random.default_rng(self.title_seed).integers(0, 255, (24, 180, 3), dtype=np.uint8)
+        level = np.zeros((24, 50, 3), dtype=np.uint8)  # identical fingerprint for "15" and "16"
+        return PanelRegions(title=title, level=level, progress=np.zeros((24, 180, 3), dtype=np.uint8))
+
+
+def test_level_is_reread_when_another_menu_opens(monkeypatch) -> None:
+    # Accessory at 16, then the weapon menu at 15: the old cache kept showing 16.
+    monkeypatch.setattr(
+        "rox_overlay.recognition.pipeline.read_progress", lambda image: FieldReading(0.4, 0.9)
+    )
+    detector = SwitchingPanelDetector()
+    ocr = FakeOcr(
+        FieldReading("Accessory Level", 0.9, "Accessory Level"),
+        FieldReading("16", 0.9, "16"),
+        FieldReading("Weapon Level", 0.9, "Weapon Level"),
+        FieldReading("15", 0.9, "15"),
+    )
+    pipeline = RecognitionPipeline(detector, ocr)  # type: ignore[arg-type]
+    frame = np.zeros((100, 100, 3), dtype=np.uint8)
+
+    first = pipeline.recognize(frame)
+    detector.title_seed = 2
+    second = pipeline.recognize(frame)
+
+    assert first is not None and first.level == 16
+    assert second is not None and second.item_type is ItemType.WEAPON and second.level == 15
+
+
+def test_level_is_reread_after_a_level_up(monkeypatch) -> None:
+    # Same menu: the bar fills up, the level rises and the bar drops back to the start.
+    progress = iter([0.95, 0.02])
+    monkeypatch.setattr(
+        "rox_overlay.recognition.pipeline.read_progress", lambda image: FieldReading(next(progress), 0.9)
+    )
+    ocr = FakeOcr(
+        FieldReading("Accessory Level", 0.9, "Accessory Level"),
+        FieldReading("15", 0.9, "15"),
+        FieldReading("16", 0.9, "16"),
+    )
+    pipeline = RecognitionPipeline(SwitchingPanelDetector(), ocr)  # type: ignore[arg-type]
+    frame = np.zeros((100, 100, 3), dtype=np.uint8)
+
+    assert pipeline.recognize(frame).level == 15  # type: ignore[union-attr]
+    after = pipeline.recognize(frame)
+
+    assert after is not None and after.level == 16

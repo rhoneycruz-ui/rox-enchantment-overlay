@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.2.1
+
+### Correções
+- O nível mostrado ficava preso no primeiro valor lido quando arma, armadura e acessório estavam em níveis diferentes (ex.: 15 e 16), ou depois de subir de nível. O nível agora é relido ao trocar de menu, depois de no máximo 2 leituras reaproveitadas e sempre que a barra de progresso volta ao começo.
+
 ## 1.2.0
 
 ### Novidades
